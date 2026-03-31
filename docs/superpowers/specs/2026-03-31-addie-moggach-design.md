@@ -164,12 +164,37 @@ Content to capture/create:
 - **PlayerProfile:** bio, fun facts, favorites, position, jersey number, portrait
 - **SeasonStats:** computed/aggregated from Game entries
 
+## Responsive Strategy
+
+- **Desktop-first design** — the full interactive experience with all effects
+- **Tablet** — simplified parallax, same layout structures, touch-friendly interactions
+- **Mobile** — custom cursor disabled, simplified animations (reduce particle count, disable mouse parallax), scroll-driven effects still work via touch, hamburger nav, stacked layouts. The site must still feel epic on a phone — this is how Addie's friends will see it.
+- All media queries handled via Tailwind breakpoints (`sm`, `md`, `lg`, `xl`)
+
+## Performance Budget
+
+- **Lighthouse Performance:** ≥ 85
+- **Largest Contentful Paint:** < 2.5s
+- **Total JS bundle:** < 300kb gzipped (code-split per page)
+- **Strategy:** Lazy load all below-fold media. Use `will-change` sparingly. IntersectionObserver to start animations only when visible. Video: poster frames + lazy load. Images: Next.js `<Image>` with responsive srcsets + blur placeholder.
+
+## Out of Scope (for now)
+
+- E-commerce / merch store
+- User accounts / login
+- Social features (comments, likes)
+- Native mobile app
+- Multi-language support
+
+These could be future phases but are not part of the initial build.
+
 ## Success Criteria
 
 1. The site looks like it could win an Awwwards Honorable Mention
 2. Every page showcases a different interactive design technique
 3. A non-developer can add journal posts, stats, and photos via Sanity
 4. Dark and light modes both feel intentional and polished (not an afterthought)
-5. Performance: Lighthouse score ≥ 85 despite heavy animation (lazy loading, code splitting, will-change optimization)
-6. It makes Addie feel like a pro athlete and captures the genuine fun of youth basketball
-7. It serves as a living portfolio piece demonstrating design/UX range
+5. Performance: Lighthouse score ≥ 85 despite heavy animation
+6. Fully responsive — still feels epic on mobile
+7. It makes Addie feel like a pro athlete and captures the genuine fun of youth basketball
+8. It serves as a living portfolio piece demonstrating design/UX range
