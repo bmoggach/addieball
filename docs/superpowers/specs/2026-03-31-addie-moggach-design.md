@@ -178,13 +178,53 @@ Content to capture/create:
 - **Total JS bundle:** < 300kb gzipped (code-split per page)
 - **Strategy:** Lazy load all below-fold media. Use `will-change` sparingly. IntersectionObserver to start animations only when visible. Video: poster frames + lazy load. Images: Next.js `<Image>` with responsive srcsets + blur placeholder.
 
+## Page 7: Merch Store
+**Design flex: Hype beast drop culture powered by Shopify**
+
+Shopify Storefront API integrated into the Next.js site with a fully custom UI matching the Electric Court aesthetic.
+
+**Drop Culture Mechanics:**
+- Scrolling marquee banner announcing drop status
+- Countdown timer to next drop (live ticking)
+- Everything marked "Sold Out" — exclusive/scarcity energy
+- "Notify Me" buttons for restock/next drop alerts
+- Limited to 35 pieces per item (her number)
+- Clean sell-out time stat — don't overload the hero with numbers
+
+**Products — 2 Collections:**
+
+*The Streetwear Drop (Limited Edition):*
+- Court Legend Hoodie — heavyweight, #35 embroidered, "Built Different" back print
+- AM35 Snapback — structured, blue on black, embroidered logo
+- Game Day Crew Socks — electric blue stripe, cushioned
+- Hype Sticker Pack — 12 holographic vinyl stickers
+
+*The Essentials:*
+- #35 Replica Jersey — electric blue mesh, performance fabric
+- Origin Story Tee — oversized, AM35 logo front, back statement
+- Practice Shorts — mesh, side stripe, #35 on leg
+- AM35 Signature Ball — custom colorway, signature panel
+
+**Lookbook Section:** Grid of campaign photography below the products — reveals on hover.
+
+**Interactions:** 3D tilt on product cards, confetti easter egg on "Sold Out" click (35 pieces naturally), product icon animations on hover, cursor trail.
+
+**Shopify Integration:**
+- Shopify store as backend for product data, images, inventory status
+- Storefront API (GraphQL) pulls products into Next.js
+- All products set to "sold out" / 0 inventory
+- Custom checkout not needed (nothing actually for sale in v1)
+- Products managed in Shopify admin — easy to add new drops
+
+**Tone:** Hype and clean. Addie's personality comes through product naming and selective ✌️ moments, not forced humor. Let the design and real photography do the talking.
+
 ## Out of Scope (for now)
 
-- E-commerce / merch store
 - User accounts / login
 - Social features (comments, likes)
 - Native mobile app
 - Multi-language support
+- Actual merch fulfillment (products listed as sold out in v1)
 
 These could be future phases but are not part of the initial build.
 
