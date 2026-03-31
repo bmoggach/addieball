@@ -181,7 +181,7 @@ export default function MerchPage() {
           className="relative z-10"
         >
           <div className="text-[0.55rem] font-semibold text-blue-400/50 tracking-[0.5em] uppercase mb-6">
-            Season One // Drop 001
+            Season Two // Drop 001
           </div>
           <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tight leading-[0.9]">
             THE <span className="bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(0,120,255,0.2)]">OFFICIAL</span> DROP

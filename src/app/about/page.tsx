@@ -100,7 +100,7 @@ export default function AboutPage() {
                 it&apos;s a different gear entirely.
               </p>
               <p className="text-blue-400/40 font-medium">
-                This is Season One. The beginning of the story. ✌️
+                This is Season Two. The beginning of the story. ✌️
               </p>
             </div>
           </motion.div>

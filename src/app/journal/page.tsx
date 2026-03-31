@@ -50,7 +50,7 @@ const posts = [
     title: "Season Opener — We Got the W! 🔥",
     date: "Mar 10, 2026",
     category: "Game Recap",
-    excerpt: "First game of Season One. 12 points, 5 boards, and a win. The journey officially starts.",
+    excerpt: "First game of Season Two. 12 points, 5 boards, and a win. The journey officially starts.",
     emoji: "🔥",
   },
 ];

@@ -35,7 +35,7 @@ export default function HighlightsPage() {
             HIGH<span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">LIGHTS</span>
           </h1>
           <p className="text-sm text-white/25 mt-4 max-w-md">
-            The best plays from Season One. Every crossover, every bucket, every block.
+            The best plays from Season Two. Every crossover, every bucket, every block.
           </p>
         </motion.div>
       </section>

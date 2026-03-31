@@ -122,7 +122,7 @@ export default function Hero() {
       {[
         { text: "🔥 Built Different", top: "22%", right: "16%", rotate: "8deg", delay: "1.5s" },
         { text: "💧 Ice In Her Veins", bottom: "24%", left: "16%", rotate: "-5deg", delay: "1.8s" },
-        { text: "⭐ Rookie Szn", top: "32%", left: "8%", rotate: "-12deg", delay: "2.1s" },
+        { text: "⭐ Year Two", top: "32%", left: "8%", rotate: "-12deg", delay: "2.1s" },
       ].map((sticker, i) => (
         <motion.div
           key={i}
@@ -146,7 +146,7 @@ export default function Hero() {
       <div className="absolute left-4 top-1/2 -translate-y-1/2 rotate-180 writing-vertical text-[0.45rem] font-medium text-blue-500/[0.12] tracking-[0.4em] uppercase z-20 hidden lg:block"
         style={{ writingMode: "vertical-rl" }}
       >
-        Season One • 2026
+        Season Two • 2026
       </div>
       <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[0.45rem] font-medium text-blue-500/[0.12] tracking-[0.4em] uppercase z-20 hidden lg:block"
         style={{ writingMode: "vertical-rl" }}
@@ -172,7 +172,7 @@ export default function Hero() {
         className="absolute right-10 bottom-[15%] z-20 text-right hidden lg:block"
       >
         <div className="text-[2.5rem] font-black text-blue-400/50 leading-none tracking-tight">2026</div>
-        <div className="text-[0.5rem] font-medium text-blue-400/20 tracking-[0.3em] uppercase mt-1">Season One</div>
+        <div className="text-[0.5rem] font-medium text-blue-400/20 tracking-[0.3em] uppercase mt-1">Season Two</div>
         <div className="w-[30px] h-px bg-blue-500/15 mt-2 ml-auto" />
       </motion.div>
 

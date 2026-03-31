@@ -72,10 +72,10 @@ const posts: Record<string, { title: string; date: string; category: string; emo
     category: "Game Recap",
     emoji: "🔥",
     content: [
-      "First game of Season One. 12 points, 5 boards, and a win. The journey officially starts.",
+      "First game of Season Two. 12 points, 5 boards, and a win. The journey officially starts.",
       "Nerves were real in the first quarter — missed my first two shots. But coach called a timeout and told me to just play my game. After that, everything flowed.",
       "Hit a big three in the third quarter that gave us the lead for good. The crowd (ok, mostly parents) went wild.",
-      "Final score: 42-38. It wasn't pretty but we got the W. That's all that matters for game one. Season One is officially underway. 🔥🏀",
+      "Final score: 42-38. It wasn't pretty but we got the W. That's all that matters for game one. Season Two is officially underway. 🔥🏀",
     ],
   },
 };
@@ -158,7 +158,7 @@ export default function JournalPostPage() {
             ← All Posts
           </Link>
           <div className="text-[0.4rem] text-white/10 tracking-wider">
-            Season One • 2026
+            Season Two • 2026
           </div>
         </div>
       </article>

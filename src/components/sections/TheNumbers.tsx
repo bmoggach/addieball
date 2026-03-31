@@ -53,7 +53,7 @@ export default function TheNumbers() {
         className="text-center mb-16"
       >
         <div className="text-[0.55rem] font-semibold text-blue-400/50 tracking-[0.5em] uppercase mb-4">
-          Season One
+          Season Two
         </div>
         <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight">
           The <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Numbers</span>

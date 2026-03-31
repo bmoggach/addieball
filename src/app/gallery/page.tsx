@@ -39,13 +39,13 @@ export default function GalleryPage() {
           className="relative z-10"
         >
           <div className="text-[0.55rem] font-semibold text-blue-400/50 tracking-[0.5em] uppercase mb-4">
-            Season One
+            Season Two
           </div>
           <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tight">
             GAL<span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">LERY</span>
           </h1>
           <p className="text-sm text-white/25 mt-4 max-w-md">
-            Action shots, candids, behind the scenes. The visual story of Season One.
+            Action shots, candids, behind the scenes. The visual story of Season Two.
           </p>
         </motion.div>
       </section>
@@ -132,7 +132,7 @@ export default function GalleryPage() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,100,255,0.06)_0%,transparent_70%)]" />
             <div className="absolute bottom-6 left-6">
               <div className="text-lg font-bold text-white/70">{filtered[lightbox]?.caption}</div>
-              <div className="text-[0.5rem] text-blue-400/30 tracking-wider uppercase mt-1">{filtered[lightbox]?.category} • Season One</div>
+              <div className="text-[0.5rem] text-blue-400/30 tracking-wider uppercase mt-1">{filtered[lightbox]?.category} • Season Two</div>
             </div>
           </div>
 

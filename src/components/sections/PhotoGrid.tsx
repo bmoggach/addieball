@@ -61,7 +61,7 @@ export default function PhotoGrid() {
               <div className="absolute bottom-4 left-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0">
                 <div className="text-sm font-bold text-white/80">{photo.caption}</div>
                 <div className="text-[0.4rem] font-medium text-blue-400/40 tracking-[0.15em] uppercase mt-1">
-                  Season One • 2026
+                  Season Two • 2026
                 </div>
               </div>
 

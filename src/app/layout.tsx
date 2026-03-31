@@ -14,7 +14,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Addie Moggach #35",
-  description: "The Journey Starts Here — Season One 2026",
+  description: "The Journey Starts Here — Season Two 2026",
 };
 
 export default function RootLayout({

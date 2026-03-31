@@ -19,7 +19,7 @@ export default function Footer() {
             Addie <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Moggach</span>
           </div>
           <div className="text-[0.45rem] font-medium text-blue-400/25 tracking-[0.3em] uppercase mt-2">
-            #35 • Season One • 2026
+            #35 • Season Two • 2026
           </div>
         </div>
 
