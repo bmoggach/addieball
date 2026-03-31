@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "@/components/Footer";
 
 const streetwear = [
@@ -75,19 +75,18 @@ function ProductCard({ product, delay }: { product: typeof streetwear[0]; delay:
 
 function Countdown() {
   const [time, setTime] = useState({ d: 14, h: 8, m: 42, s: 17 });
-  const ref = useRef(time);
-  ref.current = time;
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const t = ref.current;
-      let { d, h, m, s } = t;
-      s--;
-      if (s < 0) { s = 59; m--; }
-      if (m < 0) { m = 59; h--; }
-      if (h < 0) { h = 23; d--; }
-      if (d < 0) { d = 0; h = 0; m = 0; s = 0; }
-      setTime({ d, h, m, s });
+      setTime((prev) => {
+        let { d, h, m, s } = prev;
+        s--;
+        if (s < 0) { s = 59; m--; }
+        if (m < 0) { m = 59; h--; }
+        if (h < 0) { h = 23; d--; }
+        if (d < 0) { d = 0; h = 0; m = 0; s = 0; }
+        return { d, h, m, s };
+      });
     }, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -112,7 +111,7 @@ function Countdown() {
 }
 
 export default function MerchPage() {
-  const [confetti, setConfetti] = useState<Array<{ id: number; x: number; y: number; color: string }>>([]);
+  const [confetti, setConfetti] = useState<Array<{ id: number; x: number; y: number; color: string; delay: number; dur: number }>>([]);
 
   const handleSoldOutClick = (e: React.MouseEvent) => {
     const rect = (e.target as HTMLElement).getBoundingClientRect();
@@ -122,6 +121,8 @@ export default function MerchPage() {
       x: rect.left + rect.width / 2 + (Math.random() - 0.5) * 150,
       y: rect.top,
       color: colors[Math.floor(Math.random() * colors.length)],
+      delay: Math.random() * 0.4,
+      dur: 1 + Math.random(),
     }));
     setConfetti(pieces);
     setTimeout(() => setConfetti([]), 2000);
@@ -140,8 +141,8 @@ export default function MerchPage() {
                 left: p.x,
                 top: p.y,
                 background: p.color,
-                animationDelay: `${Math.random() * 0.4}s`,
-                animationDuration: `${1 + Math.random()}s`,
+                animationDelay: `${p.delay}s`,
+                animationDuration: `${p.dur}s`,
               }}
             />
           ))}

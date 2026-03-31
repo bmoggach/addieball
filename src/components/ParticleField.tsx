@@ -30,19 +30,9 @@ export default function ParticleField({ count = 25 }: { count?: number }) {
   }, [count]);
 
   return (
-    <>
-      <style jsx global>{`
-        @keyframes particle-float {
-          0% { transform: translateY(100vh) scale(0); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-        }
-      `}</style>
-      <div
-        ref={containerRef}
-        className="fixed inset-0 pointer-events-none z-[1]"
-      />
-    </>
+    <div
+      ref={containerRef}
+      className="fixed inset-0 pointer-events-none z-[1]"
+    />
   );
 }

@@ -95,9 +95,9 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.6 }}
             className="text-[0.65rem] font-medium text-cyan-400/45 tracking-[0.6em] uppercase mt-8"
           >
-            <span className="text-blue-500/25 mr-2">//</span>
+            <span className="text-blue-500/25 mr-2">{"//"}</span>
             The Journey Starts Here
-            <span className="text-blue-500/25 ml-2">//</span>
+            <span className="text-blue-500/25 ml-2">{"//"}</span>
           </motion.div>
         </div>
       </div>

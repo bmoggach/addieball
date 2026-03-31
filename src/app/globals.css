@@ -74,6 +74,13 @@ body {
 
 /* ====== Animations ====== */
 
+@keyframes particle-float {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
 @keyframes ring-expand {
   0% { width: 80px; height: 80px; opacity: 0.4; }
   100% { width: 900px; height: 900px; opacity: 0; }
