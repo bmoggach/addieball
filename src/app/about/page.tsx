@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 
 const funFacts = [
@@ -10,7 +11,7 @@ const funFacts = [
   { icon: "🐕", label: "Dog Person" },
   { icon: "🍕", label: "Pizza Before Every Game" },
   { icon: "⭐", label: "Favorite Player: Sabrina Ionescu" },
-  { icon: "💙", label: "Team Color: Blue" },
+  { icon: "👑", label: "Barrie Royals" },
   { icon: "📚", label: "Grade: 6th" },
 ];
 
@@ -65,8 +66,14 @@ export default function AboutPage() {
             className="w-full md:w-80 flex-shrink-0"
           >
             <div className="aspect-[3/4] rounded-xl overflow-hidden border border-blue-500/[0.08] bg-gradient-to-br from-blue-900/[0.06] to-blue-950/[0.03] relative">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,100,255,0.08)_0%,transparent_70%)]" />
-              <div className="absolute inset-0 flex items-center justify-center text-8xl opacity-[0.06]">🏀</div>
+              <Image
+                src="/images/about/addie-flex-cutout.png"
+                alt="Addie Moggach flexing with basketball"
+                fill
+                className="object-contain object-bottom"
+                sizes="320px"
+              />
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,100,255,0.06)_0%,transparent_70%)]" />
               <div className="absolute bottom-4 left-4">
                 <div className="text-3xl font-black text-blue-400/30">#35</div>
               </div>
@@ -85,8 +92,8 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-4 text-sm text-white/40 leading-relaxed">
               <p>
-                11 years old. Point guard. #35. Addie picked up a basketball at 8 and never put it down.
-                Three seasons of rec league later, she&apos;s leading her team in assists and making defenders
+                11 years old. #35. U12 Barrie Royals. Addie picked up a basketball and never put it down.
+                Now in her second year of rep basketball, she&apos;s leading her team and making defenders
                 question their life choices.
               </p>
               <p>

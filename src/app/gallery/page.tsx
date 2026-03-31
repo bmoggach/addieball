@@ -2,24 +2,25 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 
 const images = [
-  { caption: "Game Day Focus", category: "Game", aspect: "tall" },
-  { caption: "Fast Break Finish", category: "Game", aspect: "wide" },
-  { caption: "Pre-Game Drills", category: "Practice", aspect: "square" },
-  { caption: "Team Huddle", category: "Game", aspect: "wide" },
-  { caption: "Shooting Practice", category: "Practice", aspect: "tall" },
-  { caption: "Post-Game Glow", category: "Lifestyle", aspect: "square" },
-  { caption: "Crossover Move", category: "Game", aspect: "wide" },
-  { caption: "Lacing Up", category: "Lifestyle", aspect: "tall" },
-  { caption: "Defense Stance", category: "Game", aspect: "square" },
-  { caption: "Victory Pose", category: "Lifestyle", aspect: "wide" },
-  { caption: "Free Throw Line", category: "Game", aspect: "tall" },
-  { caption: "Warmup Stretches", category: "Practice", aspect: "square" },
+  { caption: "Studio Portrait", category: "Portraits", aspect: "tall", src: "/images/gallery/studio-portrait.jpg" },
+  { caption: "The Flex", category: "Portraits", aspect: "tall", src: "/images/gallery/studio-flex.jpg" },
+  { caption: "Teammates", category: "Lifestyle", aspect: "tall", src: "/images/gallery/studio-piggyback.jpg" },
+  { caption: "Team Huddle", category: "Game", aspect: "wide", src: "/images/action/huddle.jpg" },
+  { caption: "Warmup at Stadium", category: "Game", aspect: "tall", src: "/images/action/warmup.jpg" },
+  { caption: "Post-Game Smile", category: "Lifestyle", aspect: "tall", src: "/images/action/postgame-smile.jpg" },
+  { caption: "Game Action", category: "Game", aspect: "wide", src: "/images/action/action-1.jpg" },
+  { caption: "On the Court", category: "Game", aspect: "wide", src: "/images/action/action-2.jpg" },
+  { caption: "Game Day", category: "Game", aspect: "wide", src: "/images/action/action-3.jpg" },
+  { caption: "In the Zone", category: "Game", aspect: "wide", src: "/images/action/action-4.jpg" },
+  { caption: "Court Vision", category: "Game", aspect: "wide", src: "/images/action/action-5.jpg" },
+  { caption: "U12 Barrie Royals", category: "Team", aspect: "wide", src: "/images/team/team-photo.jpg" },
 ];
 
-const filters = ["All", "Game", "Practice", "Lifestyle"];
+const filters = ["All", "Game", "Portraits", "Lifestyle", "Team"];
 
 export default function GalleryPage() {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -97,7 +98,13 @@ export default function GalleryPage() {
                 img.aspect === "wide" ? "aspect-video" :
                 "aspect-square"
               }`}>
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,100,255,0.05)_0%,transparent_70%)]" />
+                <Image
+                  src={img.src}
+                  alt={img.caption}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
 
@@ -128,9 +135,17 @@ export default function GalleryPage() {
           <div className="absolute top-6 right-6 text-white/40 hover:text-white/80 transition-colors cursor-pointer text-2xl font-light">
             ✕
           </div>
-          <div className="max-w-4xl w-full mx-8 aspect-[4/3] rounded-xl border border-blue-500/[0.1] bg-blue-900/[0.03] relative">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,100,255,0.06)_0%,transparent_70%)]" />
-            <div className="absolute bottom-6 left-6">
+          <div className="max-w-4xl w-full mx-8 aspect-[4/3] rounded-xl border border-blue-500/[0.1] bg-blue-900/[0.03] relative overflow-hidden">
+            {filtered[lightbox] && (
+              <Image
+                src={filtered[lightbox].src}
+                alt={filtered[lightbox].caption}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1024px) 90vw, 900px"
+              />
+            )}
+            <div className="absolute bottom-6 left-6 z-10">
               <div className="text-lg font-bold text-white/70">{filtered[lightbox]?.caption}</div>
               <div className="text-[0.5rem] text-blue-400/30 tracking-wider uppercase mt-1">{filtered[lightbox]?.category} • Season Two</div>
             </div>

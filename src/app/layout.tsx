@@ -14,7 +14,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Addie Moggach #35",
-  description: "The Journey Starts Here — Season Two 2026",
+  description: "#35 • Barrie Royals • U12 Rep Basketball • The Journey Starts Here",
 };
 
 export default function RootLayout({

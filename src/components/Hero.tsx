@@ -2,11 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Hero() {
   const titleRef = useRef<HTMLDivElement>(null);
   const numberRefs = useRef<HTMLDivElement[]>([]);
   const bloomRef = useRef<HTMLDivElement>(null);
+  const photoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onMouseMove = (e: MouseEvent) => {
@@ -21,6 +23,9 @@ export default function Hero() {
       });
       if (bloomRef.current) {
         bloomRef.current.style.transform = `translate(${x * -15}px, ${y * -10}px) scale(${1 + Math.abs(x) * 0.05})`;
+      }
+      if (photoRef.current) {
+        photoRef.current.style.transform = `translate(${x * 5}px, ${y * 3}px)`;
       }
     };
 
@@ -70,6 +75,25 @@ export default function Hero() {
           </div>
         ))}
 
+        {/* ADDIE CUTOUT — overlapping the typography */}
+        <motion.div
+          ref={photoRef}
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute z-20 bottom-[-18vh] pointer-events-none"
+          style={{ willChange: "transform" }}
+        >
+          <Image
+            src="/images/hero/addie-cutout.png"
+            alt="Addie Moggach #35 — Barrie Royals"
+            width={700}
+            height={933}
+            priority
+            className="h-[85vh] w-auto object-contain drop-shadow-[0_0_80px_rgba(0,80,255,0.15)]"
+          />
+        </motion.div>
+
         {/* Name */}
         <div ref={titleRef} className="relative z-10 text-center" style={{ willChange: "transform" }}>
           <motion.div
@@ -96,7 +120,7 @@ export default function Hero() {
             className="text-[0.65rem] font-medium text-cyan-400/45 tracking-[0.6em] uppercase mt-8"
           >
             <span className="text-blue-500/25 mr-2">{"//"}</span>
-            The Journey Starts Here
+            Barrie Royals #35
             <span className="text-blue-500/25 ml-2">{"//"}</span>
           </motion.div>
         </div>
@@ -122,14 +146,14 @@ export default function Hero() {
       {[
         { text: "🔥 Built Different", top: "22%", right: "16%", rotate: "8deg", delay: "1.5s" },
         { text: "💧 Ice In Her Veins", bottom: "24%", left: "16%", rotate: "-5deg", delay: "1.8s" },
-        { text: "⭐ Year Two", top: "32%", left: "8%", rotate: "-12deg", delay: "2.1s" },
+        { text: "👑 Barrie Royals", top: "32%", left: "8%", rotate: "-12deg", delay: "2.1s" },
       ].map((sticker, i) => (
         <motion.div
           key={i}
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, delay: 1.5 + i * 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-          className="absolute z-20 bg-blue-500/[0.08] border border-blue-400/[0.15] rounded-full px-4 py-1.5 text-[0.55rem] font-bold text-cyan-400/60 tracking-wider uppercase backdrop-blur-sm cursor-default hover:bg-blue-500/[0.15] hover:border-blue-400/[0.3] hover:scale-110 transition-all"
+          className="absolute z-30 bg-blue-500/[0.08] border border-blue-400/[0.15] rounded-full px-4 py-1.5 text-[0.55rem] font-bold text-cyan-400/60 tracking-wider uppercase backdrop-blur-sm cursor-default hover:bg-blue-500/[0.15] hover:border-blue-400/[0.3] hover:scale-110 transition-all"
           style={{
             top: sticker.top,
             right: sticker.right,
@@ -143,15 +167,15 @@ export default function Hero() {
       ))}
 
       {/* Vertical side text */}
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 rotate-180 writing-vertical text-[0.45rem] font-medium text-blue-500/[0.12] tracking-[0.4em] uppercase z-20 hidden lg:block"
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 rotate-180 text-[0.45rem] font-medium text-blue-500/[0.12] tracking-[0.4em] uppercase z-20 hidden lg:block"
         style={{ writingMode: "vertical-rl" }}
       >
-        Season Two • 2026
+        Barrie Royals • 2025-2026
       </div>
       <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[0.45rem] font-medium text-blue-500/[0.12] tracking-[0.4em] uppercase z-20 hidden lg:block"
         style={{ writingMode: "vertical-rl" }}
       >
-        Youth Basketball • #35
+        U12 Rep Basketball • #35
       </div>
 
       {/* Side badges */}
@@ -159,7 +183,7 @@ export default function Hero() {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.8 }}
-        className="absolute left-10 bottom-[15%] z-20 hidden lg:block"
+        className="absolute left-10 bottom-[15%] z-30 hidden lg:block"
       >
         <div className="text-[2.5rem] font-black text-blue-400/50 leading-none tracking-tight">#35</div>
         <div className="text-[0.5rem] font-medium text-blue-400/20 tracking-[0.3em] uppercase mt-1">Jersey Number</div>
@@ -169,7 +193,7 @@ export default function Hero() {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.8 }}
-        className="absolute right-10 bottom-[15%] z-20 text-right hidden lg:block"
+        className="absolute right-10 bottom-[15%] z-30 text-right hidden lg:block"
       >
         <div className="text-[2.5rem] font-black text-blue-400/50 leading-none tracking-tight">2026</div>
         <div className="text-[0.5rem] font-medium text-blue-400/20 tracking-[0.3em] uppercase mt-1">Season Two</div>
@@ -181,7 +205,7 @@ export default function Hero() {
         <div className="flex animate-ticker whitespace-nowrap">
           {Array(2).fill(null).map((_, j) => (
             <div key={j} className="flex">
-              {["Addie Moggach", "•", "#35", "•", "Buckets", "•", "Handles", "•", "Game Time", "•", "Let's Hoop", "•", "She's Him", "•", "Next Up", "•"].map((t, i) => (
+              {["Addie Moggach", "•", "#35", "•", "Barrie Royals", "•", "Buckets", "•", "Game Time", "•", "Built Different", "•"].map((t, i) => (
                 <span key={`${j}-${i}`} className="text-base font-extrabold text-blue-400/80 tracking-[0.3em] uppercase px-6">
                   {t}
                 </span>
@@ -196,7 +220,7 @@ export default function Hero() {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-center"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 text-center"
       >
         <div className="w-11 h-11 border-[1.5px] border-blue-500/15 rounded-full flex items-center justify-center mx-auto relative overflow-hidden">
           <div className="absolute inset-[-50%] bg-[conic-gradient(transparent,rgba(0,140,255,0.25),transparent)] animate-spin-slow" />
