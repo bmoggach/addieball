@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --color-background: #030308;
+  --color-foreground: #ffffff;
+}
+
+.dark {
+  --color-background: #030308;
+  --color-foreground: #ffffff;
+}
+
+/* Hide default cursor on desktop */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: "Inter", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ====== #35 Number Layers ====== */
+
+.number-glow {
+  z-index: 1;
+  color: transparent;
+  text-shadow:
+    0 0 40px rgba(0,100,255,0.18),
+    0 0 100px rgba(0,100,255,0.12),
+    0 0 200px rgba(0,80,255,0.08),
+    0 0 350px rgba(0,60,255,0.05);
+  animation: glow-breathe 5s ease-in-out infinite alternate;
+}
+
+.number-stroke {
+  z-index: 2;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(0,120,255,0.18);
+  animation: stroke-breathe 5s ease-in-out infinite alternate;
+}
+
+.number-fill {
+  z-index: 3;
+  background: linear-gradient(180deg, rgba(0,130,255,0.08) 0%, rgba(0,100,255,0.04) 40%, rgba(0,80,255,0.01) 70%, transparent 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fill-breathe 5s ease-in-out infinite alternate;
+}
+
+.number-edge {
+  z-index: 4;
+  color: transparent;
+  -webkit-text-stroke: 0.5px rgba(0,160,255,0.08);
+  text-shadow: 0 0 6px rgba(0,160,255,0.1);
+}
+
+@keyframes glow-breathe {
+  0% { text-shadow: 0 0 30px rgba(0,100,255,0.12), 0 0 80px rgba(0,100,255,0.08), 0 0 160px rgba(0,80,255,0.05), 0 0 280px rgba(0,60,255,0.03); }
+  100% { text-shadow: 0 0 50px rgba(0,120,255,0.22), 0 0 120px rgba(0,110,255,0.15), 0 0 240px rgba(0,90,255,0.1), 0 0 400px rgba(0,70,255,0.06); }
+}
+
+@keyframes stroke-breathe {
+  0% { -webkit-text-stroke-color: rgba(0,120,255,0.12); }
+  100% { -webkit-text-stroke-color: rgba(0,140,255,0.25); }
+}
+
+@keyframes fill-breathe {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* ====== Animations ====== */
+
+@keyframes ring-expand {
+  0% { width: 80px; height: 80px; opacity: 0.4; }
+  100% { width: 900px; height: 900px; opacity: 0; }
+}
+
+@keyframes bloom-pulse {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes emoji-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-15px) rotate(5deg); }
+  50% { transform: translateY(-5px) rotate(-3deg); }
+  75% { transform: translateY(-20px) rotate(3deg); }
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(-6px); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0.3; }
+}
+
+@keyframes pulse-slow {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* Tailwind custom utilities */
+.animate-ring-expand { animation: ring-expand 5s ease-out infinite; }
+.animate-bloom-pulse { animation: bloom-pulse 5s ease-in-out infinite alternate; }
+.animate-emoji-float { animation: emoji-float 8s ease-in-out infinite; }
+.animate-ticker { animation: ticker-scroll 25s linear infinite; }
+.animate-scroll-bounce { animation: scroll-bounce 2s ease-in-out infinite; }
+.animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite alternate; }
+.animate-spin-slow { animation: spin 3s linear infinite; }

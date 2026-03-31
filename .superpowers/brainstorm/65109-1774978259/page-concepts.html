@@ -1,0 +1,147 @@
+<h2>Page Concepts — What's each page's superpower?</h2>
+<p class="subtitle">Each page is a chance to flex a different design technique</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="highlights" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #030308 0%, #060618 100%); padding: 1.5rem; min-height: 200px; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 50%, rgba(0,100,255,0.06) 0%, transparent 70%);"></div>
+      <!-- Video player mock -->
+      <div style="background: rgba(0,140,255,0.03); border: 1px solid rgba(0,140,255,0.08); border-radius: 8px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative;">
+        <div style="width: 50px; height: 50px; border: 2px solid rgba(0,180,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 0; height: 0; border-left: 14px solid rgba(0,180,255,0.5); border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 4px;"></div>
+        </div>
+        <div style="position: absolute; bottom: 0.5rem; left: 0.75rem; font-size: 0.5rem; color: rgba(0,180,255,0.3); letter-spacing: 0.15em; text-transform: uppercase;">TOP PLAY #12 • vs THUNDER</div>
+      </div>
+      <!-- Thumbnails -->
+      <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+        <div style="flex: 1; aspect-ratio: 16/9; background: rgba(0,140,255,0.04); border: 1px solid rgba(0,140,255,0.06); border-radius: 4px;"></div>
+        <div style="flex: 1; aspect-ratio: 16/9; background: rgba(0,140,255,0.04); border: 1px solid rgba(0,140,255,0.06); border-radius: 4px;"></div>
+        <div style="flex: 1; aspect-ratio: 16/9; background: rgba(0,140,255,0.04); border: 1px solid rgba(0,140,255,0.06); border-radius: 4px;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>🎬 Highlights</h3>
+      <p><strong>Design flex:</strong> Scroll-driven video playback. As you scroll, clips scrub through. Hover thumbnails to preview. Featured play takes the full viewport with cinematic letterboxing. Filter by game, play type. Each clip feels like a SportsCenter Top 10 moment.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="gallery" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #030308 0%, #060618 100%); padding: 1.5rem; min-height: 200px; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 40%, rgba(0,100,255,0.05) 0%, transparent 60%);"></div>
+      <!-- Masonry grid mock -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 0.6fr 1fr; gap: 0.4rem; height: 160px;">
+        <div style="background: rgba(0,140,255,0.05); border: 1px solid rgba(0,140,255,0.08); border-radius: 4px; grid-row: span 2;"></div>
+        <div style="background: rgba(0,140,255,0.04); border: 1px solid rgba(0,140,255,0.06); border-radius: 4px;"></div>
+        <div style="background: rgba(0,140,255,0.03); border: 1px solid rgba(0,140,255,0.06); border-radius: 4px; grid-row: span 2;"></div>
+        <div style="background: rgba(0,140,255,0.04); border: 1px solid rgba(0,140,255,0.06); border-radius: 4px;"></div>
+        <div style="background: rgba(0,140,255,0.05); border: 1px solid rgba(0,140,255,0.08); border-radius: 4px;"></div>
+        <div style="background: rgba(0,140,255,0.03); border: 1px solid rgba(0,140,255,0.06); border-radius: 4px;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>📸 Gallery</h3>
+      <p><strong>Design flex:</strong> Masonry grid with cursor-reactive tilt (3D perspective shift on hover). Images scale up smoothly into a full-screen lightbox. Infinite scroll loading. Filter by game/practice/lifestyle. Every photo has that parallax depth — the gallery itself feels 3D.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="stats" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #030308 0%, #060618 100%); padding: 1.5rem; min-height: 200px; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 70% 60%, rgba(0,100,255,0.05) 0%, transparent 60%);"></div>
+      <!-- Stats HUD mock -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 0.5rem;">
+        <div style="text-align: center;">
+          <div style="font-size: 2.2rem; font-weight: 900; color: rgba(0,180,255,0.6); font-family: 'Inter', monospace;">14.2</div>
+          <div style="font-size: 0.45rem; color: rgba(0,180,255,0.25); letter-spacing: 0.2em; text-transform: uppercase;">PPG</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 2.2rem; font-weight: 900; color: rgba(0,180,255,0.6); font-family: 'Inter', monospace;">5.8</div>
+          <div style="font-size: 0.45rem; color: rgba(0,180,255,0.25); letter-spacing: 0.2em; text-transform: uppercase;">RPG</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 2.2rem; font-weight: 900; color: rgba(0,180,255,0.6); font-family: 'Inter', monospace;">3.1</div>
+          <div style="font-size: 0.45rem; color: rgba(0,180,255,0.25); letter-spacing: 0.2em; text-transform: uppercase;">APG</div>
+        </div>
+      </div>
+      <!-- Timeline bar -->
+      <div style="margin-top: 1.5rem;">
+        <div style="height: 2px; background: rgba(0,140,255,0.06); border-radius: 1px; position: relative;">
+          <div style="position: absolute; left: 0; top: 0; height: 100%; width: 65%; background: linear-gradient(90deg, rgba(0,140,255,0.3), rgba(0,200,255,0.15)); border-radius: 1px;"></div>
+          <div style="position: absolute; left: 65%; top: -3px; width: 8px; height: 8px; background: rgba(0,180,255,0.5); border-radius: 50%;"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+          <span style="font-size: 0.4rem; color: rgba(0,140,255,0.2); letter-spacing: 0.15em;">GAME 1</span>
+          <span style="font-size: 0.4rem; color: rgba(0,140,255,0.2); letter-spacing: 0.15em;">GAME 18</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>📊 Stats / The Journey</h3>
+      <p><strong>Design flex:</strong> Sports HUD energy. Stats count up with spring physics when they scroll in. Interactive timeline — scrub through the season game by game. Charts that animate and glow. Season milestones pop up as badges. Everything feels like a broadcast overlay.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="about" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #030308 0%, #060618 100%); padding: 1.5rem; min-height: 200px; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 40% 50%, rgba(0,100,255,0.05) 0%, transparent 60%);"></div>
+      <!-- About layout mock -->
+      <div style="display: flex; gap: 1.5rem; align-items: center; margin-top: 1rem;">
+        <div style="width: 100px; height: 130px; background: rgba(0,140,255,0.04); border: 1px solid rgba(0,140,255,0.08); border-radius: 8px; flex-shrink: 0;"></div>
+        <div>
+          <div style="font-size: 1.5rem; font-weight: 900; color: white; line-height: 1.1;">Meet<br><span style="color: rgba(0,180,255,0.7);">Addie</span></div>
+          <div style="margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.4rem;">
+            <div style="height: 4px; width: 80%; background: rgba(255,255,255,0.04); border-radius: 2px;"></div>
+            <div style="height: 4px; width: 95%; background: rgba(255,255,255,0.03); border-radius: 2px;"></div>
+            <div style="height: 4px; width: 60%; background: rgba(255,255,255,0.03); border-radius: 2px;"></div>
+          </div>
+          <!-- Fun facts -->
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+            <div style="background: rgba(0,140,255,0.06); border: 1px solid rgba(0,140,255,0.1); border-radius: 20px; padding: 0.2rem 0.5rem; font-size: 0.4rem; color: rgba(0,180,255,0.5);">🏀 Point Guard</div>
+            <div style="background: rgba(0,140,255,0.06); border: 1px solid rgba(0,140,255,0.1); border-radius: 20px; padding: 0.2rem 0.5rem; font-size: 0.4rem; color: rgba(0,180,255,0.5);">🎵 Loves Music</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>👤 About Addie</h3>
+      <p><strong>Design flex:</strong> The personality page. Big portrait photo with parallax. Fun facts as animated pill badges. Favorite things carousel. "Day in the life" scroll story. This is where the youth energy goes hardest — stickers, emojis, her actual personality shining through.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="journal" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #030308 0%, #060618 100%); padding: 1.5rem; min-height: 200px; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 60% 40%, rgba(0,100,255,0.05) 0%, transparent 60%);"></div>
+      <!-- Blog cards mock -->
+      <div style="display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem;">
+        <div style="display: flex; gap: 0.75rem; align-items: center; background: rgba(0,140,255,0.02); border: 1px solid rgba(0,140,255,0.06); border-radius: 6px; padding: 0.6rem;">
+          <div style="width: 60px; height: 45px; background: rgba(0,140,255,0.05); border-radius: 4px; flex-shrink: 0;"></div>
+          <div>
+            <div style="font-size: 0.6rem; font-weight: 700; color: white;">Game Day vs Lightning ⚡</div>
+            <div style="font-size: 0.4rem; color: rgba(0,180,255,0.3); margin-top: 0.2rem; letter-spacing: 0.1em;">MAR 28, 2026 • GAME RECAP</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.75rem; align-items: center; background: rgba(0,140,255,0.02); border: 1px solid rgba(0,140,255,0.06); border-radius: 6px; padding: 0.6rem;">
+          <div style="width: 60px; height: 45px; background: rgba(0,140,255,0.04); border-radius: 4px; flex-shrink: 0;"></div>
+          <div>
+            <div style="font-size: 0.6rem; font-weight: 700; color: white;">New Kicks Unboxing 👟</div>
+            <div style="font-size: 0.4rem; color: rgba(0,180,255,0.3); margin-top: 0.2rem; letter-spacing: 0.1em;">MAR 25, 2026 • LIFESTYLE</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.75rem; align-items: center; background: rgba(0,140,255,0.02); border: 1px solid rgba(0,140,255,0.06); border-radius: 6px; padding: 0.6rem;">
+          <div style="width: 60px; height: 45px; background: rgba(0,140,255,0.04); border-radius: 4px; flex-shrink: 0;"></div>
+          <div>
+            <div style="font-size: 0.6rem; font-weight: 700; color: white;">First Practice Highlights 🔥</div>
+            <div style="font-size: 0.4rem; color: rgba(0,180,255,0.3); margin-top: 0.2rem; letter-spacing: 0.1em;">MAR 20, 2026 • BEHIND THE SCENES</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>📝 Journal</h3>
+      <p><strong>Design flex:</strong> Each post is its own rich media experience — not a boring blog. Game recaps with embedded highlight clips. Photo stories. Behind-the-scenes moments. Posts load with staggered animations. Categories: Game Recaps, Lifestyle, Behind the Scenes, Milestones.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top: 1.5rem; opacity: 0.5;">These all look good? Or want to change any page's direction?</p>

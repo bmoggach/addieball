@@ -1,0 +1,351 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+
+  .hero-mock {
+    background: linear-gradient(180deg, #030308 0%, #060618 40%, #030308 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    min-height: 520px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Ambient court glow */
+  .hero-mock::before {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 60%;
+    background: radial-gradient(ellipse, rgba(0,120,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Court line hints */
+  .court-lines {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    pointer-events: none;
+  }
+  .court-lines .half-line {
+    position: absolute;
+    bottom: 60px;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,140,255,0.08), transparent);
+  }
+  .court-lines .center-circle {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 40px;
+    border: 1px solid rgba(0,140,255,0.06);
+    border-bottom: none;
+    border-radius: 40px 40px 0 0;
+  }
+  .court-lines .three-pt {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 60px;
+    border: 1px solid rgba(0,140,255,0.04);
+    border-bottom: none;
+    border-radius: 100px 100px 0 0;
+  }
+
+  /* Top nav */
+  .hero-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+  .hero-logo {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(0,180,255,0.5);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+  .hero-logo span {
+    color: rgba(255,255,255,0.6);
+  }
+  .hero-nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+  .hero-nav-links a {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  /* Main title block */
+  .hero-title-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    text-align: center;
+    z-index: 5;
+  }
+  .hero-number {
+    font-size: 10rem;
+    font-weight: 900;
+    color: rgba(0,140,255,0.04);
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-family: 'Inter', sans-serif;
+  }
+  .hero-firstname {
+    font-size: 5.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 0.85;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-lastname {
+    font-size: 5.5rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #0078ff, #00c8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 0.85;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-tagline {
+    font-size: 0.6rem;
+    color: rgba(0,180,255,0.45);
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Floating stat badges */
+  .stat-badge {
+    position: absolute;
+    z-index: 10;
+  }
+  .stat-badge .stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(0,180,255,0.7);
+    font-family: 'Inter', monospace;
+    line-height: 1;
+  }
+  .stat-badge .stat-label {
+    font-size: 0.45rem;
+    color: rgba(0,180,255,0.3);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  .stat-left {
+    bottom: 4rem;
+    left: 2rem;
+    text-align: left;
+  }
+  .stat-right {
+    bottom: 4rem;
+    right: 2rem;
+    text-align: right;
+  }
+
+  /* Number badge */
+  .jersey-number {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    z-index: 3;
+  }
+  .jersey-number .num {
+    font-size: 6rem;
+    font-weight: 900;
+    -webkit-text-stroke: 1.5px rgba(0,140,255,0.2);
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+  }
+  .scroll-indicator .scroll-ring {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid rgba(0,140,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .scroll-indicator .scroll-arrow {
+    color: rgba(0,140,255,0.4);
+    font-size: 0.7rem;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(-2px); }
+    50% { transform: translateY(2px); }
+  }
+  .scroll-indicator .scroll-text {
+    font-size: 0.45rem;
+    color: rgba(0,140,255,0.2);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  /* Photo placeholder */
+  .photo-zone {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    width: 280px;
+    height: 350px;
+    border: 1px dashed rgba(0,140,255,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    background: rgba(0,140,255,0.02);
+  }
+  .photo-zone-text {
+    font-size: 0.55rem;
+    color: rgba(0,140,255,0.2);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .notes {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: rgba(0,140,255,0.03);
+    border: 1px solid rgba(0,140,255,0.08);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+  .notes strong {
+    color: rgba(0,180,255,0.7);
+  }
+</style>
+
+<h2>Homepage Hero — Addie Moggach #35</h2>
+<p class="subtitle">Electric Court direction, refined with her real details</p>
+
+<div class="hero-mock">
+  <!-- Nav -->
+  <div class="hero-nav">
+    <div class="hero-logo"><span>Addie</span> Moggach</div>
+    <div class="hero-nav-links">
+      <a href="#">Highlights</a>
+      <a href="#">Gallery</a>
+      <a href="#">Stats</a>
+      <a href="#">About</a>
+      <a href="#">Journal</a>
+    </div>
+  </div>
+
+  <!-- Giant background number -->
+  <div class="hero-number">35</div>
+
+  <!-- Title -->
+  <div class="hero-title-block">
+    <div class="hero-firstname">ADDIE</div>
+    <div class="hero-lastname">MOGGACH</div>
+    <div class="hero-tagline">The Journey Starts Here</div>
+  </div>
+
+  <!-- Jersey number outline -->
+  <div class="jersey-number">
+    <div class="num">35</div>
+  </div>
+
+  <!-- Photo placeholder -->
+  <!-- In production: full-bleed action shot of Addie, cutout style, overlapping the type -->
+  <!--
+  <div class="photo-zone">
+    <div class="photo-zone-text">Addie action shot<br>cutout / full-bleed<br>overlaps the typography</div>
+  </div>
+  -->
+
+  <!-- Floating stats -->
+  <div class="stat-badge stat-left">
+    <div class="stat-value">#35</div>
+    <div class="stat-label">Jersey</div>
+  </div>
+  <div class="stat-badge stat-right">
+    <div class="stat-value">2026</div>
+    <div class="stat-label">Season One</div>
+  </div>
+
+  <!-- Court line hints -->
+  <div class="court-lines">
+    <div class="half-line"></div>
+    <div class="center-circle"></div>
+    <div class="three-pt"></div>
+  </div>
+
+  <!-- Scroll -->
+  <div class="scroll-indicator">
+    <div class="scroll-ring">
+      <div class="scroll-arrow">↓</div>
+    </div>
+    <div class="scroll-text">Explore</div>
+  </div>
+</div>
+
+<div class="notes">
+  <strong>Design notes:</strong><br>
+  • Giant ghosted <strong>#35</strong> behind the name — her number is part of the identity<br>
+  • In production, an <strong>action photo cutout of Addie</strong> overlaps the typography — she breaks out of the frame<br>
+  • <strong>Court lines</strong> subtly fade in at the bottom as ambient texture<br>
+  • Stats <strong>float</strong> at edges — they animate in on scroll, glow softly<br>
+  • The whole hero has a <strong>scroll-driven parallax</strong> — name moves slower than photo, #35 scales up as you scroll down<br>
+  • <strong>Custom cursor</strong>: basketball that follows mouse with physics-based trailing<br>
+  • On scroll down, hero <strong>fades to black</strong> and the next section wipes in
+</div>
