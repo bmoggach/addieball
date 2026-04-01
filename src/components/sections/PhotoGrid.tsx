@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,13 +15,7 @@ const photos = [
 export default function PhotoGrid() {
   return (
     <section className="relative py-32 px-6 md:px-10">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="mb-12 flex items-end justify-between"
-      >
+      <div className="mb-12 flex items-end justify-between">
         <div>
           <div className="text-[0.55rem] font-semibold text-blue-400/50 tracking-[0.5em] uppercase mb-4">
             Gallery
@@ -37,16 +30,12 @@ export default function PhotoGrid() {
         >
           View All →
         </Link>
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
         {photos.map((photo, i) => (
-          <motion.div
+          <div
             key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
             className={`${photo.span} group relative rounded-xl overflow-hidden border border-blue-500/[0.06] bg-gradient-to-br from-blue-900/[0.04] to-blue-950/[0.02] cursor-pointer hover:border-blue-500/[0.18] transition-all`}
             onMouseMove={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
@@ -88,7 +77,7 @@ export default function PhotoGrid() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
 

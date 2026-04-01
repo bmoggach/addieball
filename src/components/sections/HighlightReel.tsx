@@ -1,86 +1,67 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function HighlightReel() {
   return (
     <section className="relative py-32 px-6 md:px-10">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-      >
+      <div>
         <div className="text-[0.55rem] font-semibold text-blue-400/50 tracking-[0.5em] uppercase mb-4">
           Latest Highlight
         </div>
         <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight mb-8">
           Top <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Play</span>
         </h2>
-      </motion.div>
+      </div>
 
       {/* Featured video with real poster image */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        <Link href="/highlights" className="block">
-          <div className="relative aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-blue-500/[0.08] group cursor-pointer hover:border-blue-500/[0.2] transition-all">
-            {/* Poster image */}
-            <Image
-              src="/images/action/action-2.webp"
-              alt="Highlight reel — Addie Moggach #35"
-              fill
-              className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
-              sizes="(max-width: 1024px) 100vw, 1024px"
-            />
+      <Link href="/highlights" className="block">
+        <div className="relative aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-blue-500/[0.08] group cursor-pointer hover:border-blue-500/[0.2] transition-all">
+          {/* Poster image */}
+          <Image
+            src="/images/action/action-2.webp"
+            alt="Highlight reel — Addie Moggach #35"
+            fill
+            className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+          />
 
-            {/* Letterbox bars */}
-            <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/60 to-transparent z-10" />
-            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/60 to-transparent z-10" />
+          {/* Letterbox bars */}
+          <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/60 to-transparent z-10" />
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/60 to-transparent z-10" />
 
-            {/* Play button */}
-            <div className="absolute inset-0 flex items-center justify-center z-20">
-              <div className="w-20 h-20 rounded-full border-2 border-blue-400/30 flex items-center justify-center bg-blue-500/[0.08] backdrop-blur-sm group-hover:bg-blue-500/[0.2] group-hover:border-blue-400/50 group-hover:scale-110 transition-all">
-                <div className="w-0 h-0 border-l-[18px] border-l-blue-400/60 border-t-[11px] border-t-transparent border-b-[11px] border-b-transparent ml-1.5 group-hover:border-l-blue-400/90 transition-colors" />
-              </div>
-            </div>
-
-            {/* Game info overlay */}
-            <div className="absolute bottom-5 left-6 z-20">
-              <div className="text-[0.45rem] font-semibold text-blue-400/50 tracking-[0.2em] uppercase">
-                Game 12 • vs Thunder
-              </div>
-              <div className="text-sm font-bold text-white/70 mt-1">
-                Crossover → Stepback Three 🔥
-              </div>
-            </div>
-
-            {/* Duration */}
-            <div className="absolute bottom-5 right-6 z-20 text-[0.5rem] font-mono text-blue-400/30">
-              0:24
-            </div>
-
-            {/* Top play badge */}
-            <div className="absolute top-5 right-6 z-20 text-[0.45rem] font-bold text-blue-400/50 tracking-[0.15em] uppercase px-3 py-1 bg-blue-500/[0.08] border border-blue-400/15 rounded-full backdrop-blur-sm">
-              🔥 Top Play
+          {/* Play button */}
+          <div className="absolute inset-0 flex items-center justify-center z-20">
+            <div className="w-20 h-20 rounded-full border-2 border-blue-400/30 flex items-center justify-center bg-blue-500/[0.08] backdrop-blur-sm group-hover:bg-blue-500/[0.2] group-hover:border-blue-400/50 group-hover:scale-110 transition-all">
+              <div className="w-0 h-0 border-l-[18px] border-l-blue-400/60 border-t-[11px] border-t-transparent border-b-[11px] border-b-transparent ml-1.5 group-hover:border-l-blue-400/90 transition-colors" />
             </div>
           </div>
-        </Link>
-      </motion.div>
+
+          {/* Game info overlay */}
+          <div className="absolute bottom-5 left-6 z-20">
+            <div className="text-[0.45rem] font-semibold text-blue-400/50 tracking-[0.2em] uppercase">
+              Game 12 • vs Thunder
+            </div>
+            <div className="text-sm font-bold text-white/70 mt-1">
+              Crossover → Stepback Three 🔥
+            </div>
+          </div>
+
+          {/* Duration */}
+          <div className="absolute bottom-5 right-6 z-20 text-[0.5rem] font-mono text-blue-400/30">
+            0:24
+          </div>
+
+          {/* Top play badge */}
+          <div className="absolute top-5 right-6 z-20 text-[0.45rem] font-bold text-blue-400/50 tracking-[0.15em] uppercase px-3 py-1 bg-blue-500/[0.08] border border-blue-400/15 rounded-full backdrop-blur-sm">
+            🔥 Top Play
+          </div>
+        </div>
+      </Link>
 
       {/* Thumbnail strip with real images */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="flex gap-3 mt-6 max-w-5xl mx-auto overflow-x-auto pb-2"
-      >
+      <div className="flex gap-3 mt-6 max-w-5xl mx-auto overflow-x-auto pb-2">
         {[
           { title: "Ankle Breaker", duration: "0:18", src: "/images/action/action-4.webp" },
           { title: "Fast Break Layup", duration: "0:15", src: "/images/action/action-5.webp" },
@@ -112,7 +93,7 @@ export default function HighlightReel() {
             </div>
           </Link>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

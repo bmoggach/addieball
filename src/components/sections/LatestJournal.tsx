@@ -1,19 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function LatestJournal() {
   return (
     <section className="relative py-32 px-6 md:px-10">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="max-w-4xl mx-auto"
-      >
+      <div className="max-w-4xl mx-auto">
         <div className="text-[0.55rem] font-semibold text-blue-400/50 tracking-[0.5em] uppercase mb-4">
           From the Journal
         </div>
@@ -56,7 +49,7 @@ export default function LatestJournal() {
             </div>
           </div>
         </Link>
-      </motion.div>
+      </div>
     </section>
   );
 }

@@ -1,11 +1,11 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 function AnimatedStat({ value, label, suffix = "" }: { value: number; label: string; suffix?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
@@ -16,7 +16,6 @@ function AnimatedStat({ value, label, suffix = "" }: { value: number; label: str
     const animate = (now: number) => {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      // Spring-like easing
       const eased = 1 - Math.pow(1 - progress, 4);
       setDisplay(parseFloat((eased * value).toFixed(1)));
       if (progress < 1) requestAnimationFrame(animate);
@@ -45,33 +44,21 @@ export default function TheNumbers() {
       {/* Background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,80,255,0.04)_0%,transparent_60%)]" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-16"
-      >
+      <div className="text-center mb-16">
         <div className="text-[0.55rem] font-semibold text-blue-400/50 tracking-[0.5em] uppercase mb-4">
           Season Two
         </div>
         <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight">
           The <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Numbers</span>
         </h2>
-      </motion.div>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-4xl mx-auto relative z-10"
-      >
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-4xl mx-auto relative z-10">
         <AnimatedStat value={14.2} label="Points Per Game" />
         <AnimatedStat value={5.8} label="Rebounds Per Game" />
         <AnimatedStat value={3.1} label="Assists Per Game" />
         <AnimatedStat value={2.4} label="Steals Per Game" />
-      </motion.div>
+      </div>
 
       {/* Divider line */}
       <div className="max-w-4xl mx-auto mt-16">
@@ -79,13 +66,7 @@ export default function TheNumbers() {
       </div>
 
       {/* Secondary stats */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="flex justify-center gap-16 mt-12"
-      >
+      <div className="flex justify-center gap-16 mt-12">
         {[
           { value: "12-6", label: "Win-Loss" },
           { value: "48%", label: "FG%" },
@@ -96,7 +77,7 @@ export default function TheNumbers() {
             <div className="text-[0.4rem] font-medium text-blue-400/20 tracking-[0.2em] uppercase mt-1">{stat.label}</div>
           </div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }
