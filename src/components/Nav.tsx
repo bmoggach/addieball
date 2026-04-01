@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { useTheme } from "@/lib/theme";
 
 const links = [
   { href: "/highlights", label: "Highlights" },
@@ -16,7 +15,6 @@ const links = [
 
 export default function Nav() {
   const pathname = usePathname();
-  const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -47,19 +45,12 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <button
-            onClick={toggleTheme}
-            className="text-white/30 hover:text-blue-400/70 transition-colors text-sm p-2"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? "☀️" : "🌙"}
-          </button>
         </div>
 
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-white/50 hover:text-white/80 transition-colors"
+          className="md:hidden text-white/50 hover:text-white/80 transition-colors p-2"
           aria-label="Toggle menu"
         >
           <div className="space-y-1.5">
@@ -72,7 +63,7 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden" style={{ background: 'var(--overlay)' }}>
+        <div className="fixed inset-0 z-40 bg-[#030308]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -85,13 +76,6 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <button
-            onClick={toggleTheme}
-            className="text-white/30 hover:text-blue-400/70 transition-colors text-xl mt-4 p-2"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? "☀️" : "🌙"}
-          </button>
         </div>
       )}
     </>

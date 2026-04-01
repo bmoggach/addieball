@@ -23,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} dark`} suppressHydrationWarning>
-      <body className="min-h-screen font-[family-name:var(--font-inter)] antialiased" style={{ background: 'var(--bg)', color: 'var(--fg)' }}>
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen bg-[#030308] text-white font-[family-name:var(--font-inter)] antialiased">
         <CustomCursor />
         <ScanLines />
         <ParticleField count={20} />
