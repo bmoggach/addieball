@@ -14,34 +14,34 @@ const clips = [
     duration: "0:24",
   },
   {
-    title: "Crossover → Stepback",
-    desc: "AI-generated from game action photo",
-    poster: "/images/action/action-2.webp",
-    video: "/videos/clip-crossover.mp4",
+    title: "Handles",
+    desc: "AI-generated from action photo",
+    poster: "/images/action/action-5.webp",
+    video: "/videos/clip-dribble.mp4",
     badge: "🔥 AI Generated",
     duration: "0:05",
   },
   {
-    title: "Ankle Breaker",
+    title: "Quick Moves",
     desc: "AI-generated from court action photo",
     poster: "/images/action/action-4.webp",
-    video: "/videos/clip-ankle-breaker.mp4",
+    video: "/videos/clip-moves.mp4",
     badge: "🔥 AI Generated",
     duration: "0:05",
   },
   {
-    title: "Block Party",
+    title: "Court Vision",
     desc: "AI-generated from game photo",
     poster: "/images/action/action-1.webp",
-    video: "/videos/clip-block-party.mp4",
+    video: "/videos/clip-court.mp4",
     badge: "🔥 AI Generated",
     duration: "0:05",
   },
   {
-    title: "Studio Portrait",
+    title: "Studio Session",
     desc: "AI-generated from studio photoshoot",
     poster: "/images/gallery/studio-portrait.webp",
-    video: "/videos/clip-studio.mp4",
+    video: "/videos/clip-portrait.mp4",
     badge: "🔥 AI Generated",
     duration: "0:05",
   },
@@ -109,7 +109,7 @@ export default function HighlightsPage() {
               ref={videoRef}
               key={featured.video}
               src={featured.video}
-              className="absolute inset-0 w-full h-full object-cover z-10 cursor-pointer"
+              className="absolute inset-0 w-full h-full object-contain z-10 cursor-pointer"
               playsInline
               autoPlay
               onEnded={handleVideoEnd}
@@ -130,14 +130,12 @@ export default function HighlightsPage() {
               <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-black/60 to-transparent z-10" />
               <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/60 to-transparent z-10" />
 
-              {/* Play button */}
               <button onClick={handlePlay} className="absolute inset-0 flex items-center justify-center z-20 cursor-pointer">
                 <div className="w-24 h-24 rounded-full border-2 border-blue-400/30 flex items-center justify-center bg-blue-500/[0.08] backdrop-blur-sm hover:bg-blue-500/[0.2] hover:border-blue-400/50 hover:scale-110 transition-all">
                   <div className="w-0 h-0 border-l-[22px] border-l-blue-400/60 border-t-[14px] border-t-transparent border-b-[14px] border-b-transparent ml-2" />
                 </div>
               </button>
 
-              {/* Info overlay */}
               <div className="absolute bottom-6 left-8 z-20">
                 <div className="text-lg font-bold text-white/80">{featured.title}</div>
                 <div className="text-[0.5rem] text-white/30 mt-1">{featured.desc}</div>
@@ -149,14 +147,12 @@ export default function HighlightsPage() {
             </>
           )}
 
-          {/* Badge */}
           {featured.badge && (
             <div className="absolute top-5 right-6 z-30 text-[0.45rem] font-bold text-blue-400/50 tracking-[0.15em] uppercase px-3 py-1 bg-black/60 border border-blue-400/15 rounded-full backdrop-blur-sm">
               {featured.badge}
             </div>
           )}
 
-          {/* Counter */}
           <div className="absolute top-5 left-6 z-30 text-[0.45rem] font-mono text-blue-400/30">
             {active + 1} / {clips.length}
           </div>
@@ -189,7 +185,6 @@ export default function HighlightsPage() {
                   i === active ? "bg-blue-500/10" : "bg-black/30 group-hover:bg-black/10"
                 }`} />
 
-                {/* Play icon */}
                 {i !== active && (
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-black/40 backdrop-blur-sm">
@@ -198,7 +193,6 @@ export default function HighlightsPage() {
                   </div>
                 )}
 
-                {/* Playing indicator */}
                 {i === active && playing && (
                   <div className="absolute top-2 left-2 text-[0.38rem] font-bold text-blue-400/70 tracking-wider uppercase px-1.5 py-0.5 bg-blue-500/[0.15] rounded z-10 flex items-center gap-1">
                     <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400/70 animate-pulse" />
@@ -206,7 +200,6 @@ export default function HighlightsPage() {
                   </div>
                 )}
 
-                {/* Duration */}
                 <div className="absolute top-2 right-2 text-[0.4rem] font-mono text-white/30 z-10">
                   {clip.duration}
                 </div>

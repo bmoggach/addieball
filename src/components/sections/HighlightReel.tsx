@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 const clips = [
-  { title: "Game Day vs Thunder", game: "vs Thunder", duration: "0:24", poster: "/images/action/action-2.webp", video: "/videos/game-real.mp4", badge: "🎥 Real Footage" },
-  { title: "Crossover → Stepback", game: "vs Thunder", duration: "0:05", poster: "/images/action/action-2.webp", video: "/videos/clip-crossover.mp4", badge: "🔥 AI Generated" },
-  { title: "Ankle Breaker", game: "vs Lightning", duration: "0:05", poster: "/images/action/action-4.webp", video: "/videos/clip-ankle-breaker.mp4", badge: null },
-  { title: "Block Party", game: "vs Storm", duration: "0:05", poster: "/images/action/action-1.webp", video: "/videos/clip-block-party.mp4", badge: null },
-  { title: "Studio Portrait", game: "Photoshoot", duration: "0:05", poster: "/images/gallery/studio-portrait.webp", video: "/videos/clip-studio.mp4", badge: null },
+  { title: "Game Day", game: "Season Two", duration: "0:24", poster: "/images/action/action-2.webp", video: "/videos/game-real.mp4", badge: "🎥 Real Footage" },
+  { title: "Handles", game: "AI Generated", duration: "0:05", poster: "/images/action/action-5.webp", video: "/videos/clip-dribble.mp4", badge: null },
+  { title: "Quick Moves", game: "AI Generated", duration: "0:05", poster: "/images/action/action-4.webp", video: "/videos/clip-moves.mp4", badge: null },
+  { title: "Court Vision", game: "AI Generated", duration: "0:05", poster: "/images/action/action-1.webp", video: "/videos/clip-court.mp4", badge: null },
+  { title: "Studio Session", game: "AI Generated", duration: "0:05", poster: "/images/gallery/studio-portrait.webp", video: "/videos/clip-portrait.mp4", badge: null },
 ];
 
 export default function HighlightReel() {
@@ -25,15 +25,12 @@ export default function HighlightReel() {
   const handleThumbClick = useCallback((i: number) => {
     setPlaying(false);
     setActive(i);
-    // Auto-play when switching clips
     setTimeout(() => setPlaying(true), 100);
   }, []);
 
   const handleVideoEnd = useCallback(() => {
-    // Auto-advance to next clip
     if (active < clips.length - 1) {
       setActive(prev => prev + 1);
-      // Keep playing
       setTimeout(() => setPlaying(true), 100);
     } else {
       setPlaying(false);
@@ -73,19 +70,17 @@ export default function HighlightReel() {
       <div className="relative aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-blue-500/[0.08] bg-black hover:border-blue-500/[0.15] transition-all">
 
         {playing ? (
-          /* Video playing */
           <video
             ref={videoRef}
             key={featured.video}
             src={featured.video}
-            className="absolute inset-0 w-full h-full object-cover z-10 cursor-pointer"
+            className="absolute inset-0 w-full h-full object-contain z-10 cursor-pointer"
             playsInline
             autoPlay
             onEnded={handleVideoEnd}
             onClick={handleVideoClick}
           />
         ) : (
-          /* Poster state */
           <>
             <Image
               key={featured.poster}
@@ -97,18 +92,15 @@ export default function HighlightReel() {
               priority={active === 0}
             />
 
-            {/* Letterbox bars */}
             <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/60 to-transparent z-10" />
             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/60 to-transparent z-10" />
 
-            {/* Play button */}
             <button onClick={handlePlay} className="absolute inset-0 flex items-center justify-center z-20 cursor-pointer">
               <div className="w-20 h-20 rounded-full border-2 border-blue-400/30 flex items-center justify-center bg-blue-500/[0.08] backdrop-blur-sm hover:bg-blue-500/[0.2] hover:border-blue-400/50 hover:scale-110 transition-all">
                 <div className="w-0 h-0 border-l-[18px] border-l-blue-400/60 border-t-[11px] border-t-transparent border-b-[11px] border-b-transparent ml-1.5" />
               </div>
             </button>
 
-            {/* Game info */}
             <div className="absolute bottom-5 left-6 z-20">
               <div className="text-[0.45rem] font-semibold text-blue-400/50 tracking-[0.2em] uppercase">
                 {featured.game}
@@ -122,14 +114,12 @@ export default function HighlightReel() {
           </>
         )}
 
-        {/* Badge — always visible */}
         {featured.badge && (
           <div className="absolute top-5 right-6 z-30 text-[0.45rem] font-bold text-blue-400/50 tracking-[0.15em] uppercase px-3 py-1 bg-black/60 border border-blue-400/15 rounded-full backdrop-blur-sm">
             {featured.badge}
           </div>
         )}
 
-        {/* Clip counter — always visible */}
         <div className="absolute top-5 left-6 z-30 text-[0.45rem] font-mono text-blue-400/30">
           {active + 1} / {clips.length}
         </div>
