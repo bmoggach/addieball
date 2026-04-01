@@ -148,12 +148,12 @@ export default function Hero() {
 
           {/* Blue smoke video loop behind Addie */}
           <video
-            src="/videos/smoke-hero.mp4"
+            src="/videos/smoke-bg.mp4"
             autoPlay
             loop
             muted
             playsInline
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[130%] h-[75%] object-cover object-bottom opacity-40 mix-blend-screen z-[5] pointer-events-none"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-[80%] object-cover object-bottom opacity-50 mix-blend-screen z-[5] pointer-events-none"
           />
 
           <Image
