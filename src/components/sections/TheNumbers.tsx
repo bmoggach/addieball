@@ -74,7 +74,7 @@ export default function TheNumbers() {
         ].map((stat, i) => (
           <div key={i} className="text-center">
             <div className="text-2xl font-black text-white/40 tracking-tight">{stat.value}</div>
-            <div className="text-[0.4rem] font-medium text-blue-400/20 tracking-[0.2em] uppercase mt-1">{stat.label}</div>
+            <div className="text-[0.4rem] font-medium text-blue-400/40 tracking-[0.2em] uppercase mt-1">{stat.label}</div>
           </div>
         ))}
       </div>

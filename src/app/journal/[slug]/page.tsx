@@ -117,7 +117,7 @@ export default function JournalPostPage() {
             <span className="text-[0.45rem] font-bold text-blue-400/50 tracking-[0.12em] uppercase px-2.5 py-1 bg-blue-500/[0.06] rounded">
               {post.category}
             </span>
-            <span className="text-[0.45rem] text-white/20 tracking-wider">{post.date}</span>
+            <span className="text-[0.45rem] text-white/35 tracking-wider">{post.date}</span>
           </div>
           <h1 className="text-3xl md:text-4xl font-black text-white/90 leading-tight mb-4">
             {post.title}
@@ -157,7 +157,7 @@ export default function JournalPostPage() {
           <Link href="/journal" className="text-[0.5rem] font-semibold text-blue-400/40 tracking-[0.2em] uppercase hover:text-blue-400/70 transition-colors">
             ← All Posts
           </Link>
-          <div className="text-[0.4rem] text-white/10 tracking-wider">
+          <div className="text-[0.4rem] text-white/25 tracking-wider">
             Season Two • 2026
           </div>
         </div>

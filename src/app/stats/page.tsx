@@ -120,7 +120,7 @@ export default function StatsPage() {
               className="text-center"
             >
               <div className="text-2xl font-black text-white/35 tracking-tight">{stat.value}</div>
-              <div className="text-[0.4rem] font-medium text-blue-400/20 tracking-[0.2em] uppercase mt-1">{stat.label}</div>
+              <div className="text-[0.4rem] font-medium text-blue-400/40 tracking-[0.2em] uppercase mt-1">{stat.label}</div>
             </motion.div>
           ))}
         </div>
@@ -152,8 +152,8 @@ export default function StatsPage() {
             ))}
           </div>
           <div className="flex justify-between mt-2">
-            <span className="text-[0.35rem] text-blue-400/15 tracking-wider">Game 1</span>
-            <span className="text-[0.35rem] text-blue-400/15 tracking-wider">Game 18</span>
+            <span className="text-[0.35rem] text-blue-400/35 tracking-wider">Game 1</span>
+            <span className="text-[0.35rem] text-blue-400/35 tracking-wider">Game 18</span>
           </div>
         </div>
       </section>

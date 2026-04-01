@@ -62,7 +62,7 @@ export default function GalleryPage() {
                 className={`text-[0.5rem] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-full border transition-all
                   ${activeFilter === filter
                     ? "bg-blue-500/[0.1] border-blue-400/20 text-blue-400/70"
-                    : "border-white/[0.06] text-white/20 hover:border-blue-400/15 hover:text-blue-400/50"
+                    : "border-white/[0.06] text-white/35 hover:border-blue-400/15 hover:text-blue-400/50"
                   }`}
               >
                 {filter}

@@ -35,7 +35,7 @@ export default function LatestJournal() {
                 <span className="text-[0.45rem] font-bold text-blue-400/50 tracking-[0.15em] uppercase px-2 py-1 bg-blue-500/[0.06] rounded">
                   Game Recap
                 </span>
-                <span className="text-[0.45rem] text-white/20 tracking-wider">Mar 28, 2026</span>
+                <span className="text-[0.45rem] text-white/35 tracking-wider">Mar 28, 2026</span>
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-white/80 group-hover:text-white transition-colors mb-3">
                 Game Day vs Lightning ⚡ — 18 Points, 6 Boards

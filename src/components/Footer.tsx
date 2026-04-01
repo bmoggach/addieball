@@ -29,7 +29,7 @@ export default function Footer() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-[0.6rem] font-medium text-white/20 tracking-[0.2em] uppercase hover:text-blue-400/60 transition-colors"
+              className="text-[0.6rem] font-medium text-white/35 tracking-[0.2em] uppercase hover:text-blue-400/60 transition-colors"
             >
               {link.label}
             </Link>
@@ -39,10 +39,10 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-blue-500/[0.04] flex justify-between items-center">
-        <div className="text-[0.4rem] text-white/10 tracking-wider">
+        <div className="text-[0.4rem] text-white/25 tracking-wider">
           © 2026 Addie Moggach. Built Different.
         </div>
-        <div className="text-[0.4rem] text-white/10 tracking-wider">
+        <div className="text-[0.4rem] text-white/25 tracking-wider">
           The Journey Starts Here ✌️
         </div>
       </div>

@@ -90,7 +90,7 @@ export default function JournalPage() {
               className={`text-[0.5rem] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-full border transition-all
                 ${i === 0
                   ? "bg-blue-500/[0.1] border-blue-400/20 text-blue-400/70"
-                  : "border-white/[0.06] text-white/20 hover:border-blue-400/15 hover:text-blue-400/50"
+                  : "border-white/[0.06] text-white/35 hover:border-blue-400/15 hover:text-blue-400/50"
                 }`}
             >
               {cat}
@@ -125,7 +125,7 @@ export default function JournalPage() {
                       <span className="text-[0.42rem] font-bold text-blue-400/50 tracking-[0.12em] uppercase px-2 py-0.5 bg-blue-500/[0.06] rounded">
                         {post.category}
                       </span>
-                      <span className="text-[0.42rem] text-white/15 tracking-wider">{post.date}</span>
+                      <span className="text-[0.42rem] text-white/30 tracking-wider">{post.date}</span>
                     </div>
                     <h3 className="text-base md:text-lg font-bold text-white/70 group-hover:text-white/90 transition-colors mb-2">
                       {post.title}
