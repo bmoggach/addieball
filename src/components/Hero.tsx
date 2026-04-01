@@ -146,6 +146,16 @@ export default function Hero() {
           {/* Glow behind the photo */}
           <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[120%] h-[70%] bg-[radial-gradient(ellipse_at_bottom,rgba(0,80,255,0.1)_0%,transparent_60%)]" />
 
+          {/* Blue smoke video loop behind Addie */}
+          <video
+            src="/videos/smoke-hero.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[130%] h-[75%] object-cover object-bottom opacity-40 mix-blend-screen z-[5] pointer-events-none"
+          />
+
           <Image
             src="/images/hero/addie-cutout.webp"
             alt="Addie Moggach #35 — Barrie Royals"
