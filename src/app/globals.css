@@ -1,29 +1,109 @@
 @import "tailwindcss";
 
+/* ====== Theme Variables ====== */
 :root {
-  --color-background: #030308;
-  --color-foreground: #ffffff;
+  --bg: #f5f5f7;
+  --bg-secondary: #e8e8ec;
+  --fg: #1a1a2e;
+  --fg-secondary: #4a4a6a;
+  --fg-muted: #8888a0;
+  --accent: #0050dd;
+  --accent-light: #0070ff;
+  --accent-glow: rgba(0, 80, 220, 0.12);
+  --border: rgba(0, 60, 180, 0.12);
+  --card-bg: rgba(0, 60, 180, 0.04);
+  --overlay: rgba(245, 245, 247, 0.95);
 }
 
 .dark {
-  --color-background: #030308;
-  --color-foreground: #ffffff;
+  --bg: #030308;
+  --bg-secondary: #0a0a14;
+  --fg: #ffffff;
+  --fg-secondary: rgba(255, 255, 255, 0.5);
+  --fg-muted: rgba(255, 255, 255, 0.3);
+  --accent: #0078ff;
+  --accent-light: #00b4ff;
+  --accent-glow: rgba(0, 100, 255, 0.08);
+  --border: rgba(0, 100, 255, 0.08);
+  --card-bg: rgba(0, 60, 180, 0.02);
+  --overlay: rgba(3, 3, 8, 0.95);
 }
 
-/* Hide default cursor on desktop */
+/* ====== Base ====== */
 @media (pointer: fine) {
   * { cursor: none !important; }
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: var(--bg);
+  color: var(--fg);
   font-family: "Inter", system-ui, sans-serif;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* ====== #35 Number Layers ====== */
+/* Light mode overrides for components using hardcoded dark colors */
+:root:not(.dark) body {
+  background: var(--bg);
+}
 
+:root:not(.dark) .text-white { color: var(--fg); }
+:root:not(.dark) .text-white\/80 { color: rgba(26, 26, 46, 0.85); }
+:root:not(.dark) .text-white\/70 { color: rgba(26, 26, 46, 0.75); }
+:root:not(.dark) .text-white\/60 { color: rgba(26, 26, 46, 0.65); }
+:root:not(.dark) .text-white\/50 { color: rgba(26, 26, 46, 0.55); }
+:root:not(.dark) .text-white\/40 { color: rgba(26, 26, 46, 0.5); }
+:root:not(.dark) .text-white\/35 { color: rgba(26, 26, 46, 0.45); }
+:root:not(.dark) .text-white\/30 { color: rgba(26, 26, 46, 0.4); }
+:root:not(.dark) .text-white\/25 { color: rgba(26, 26, 46, 0.35); }
+:root:not(.dark) .bg-\[\#030308\] { background: var(--bg); }
+:root:not(.dark) .bg-\[\#030308\]\/95 { background: var(--overlay); }
+
+/* Light mode: blue accents stay blue but adjust opacity */
+:root:not(.dark) .text-blue-400\/70 { color: rgba(0, 80, 220, 0.85); }
+:root:not(.dark) .text-blue-400\/60 { color: rgba(0, 80, 220, 0.75); }
+:root:not(.dark) .text-blue-400\/50 { color: rgba(0, 80, 220, 0.65); }
+:root:not(.dark) .text-blue-400\/40 { color: rgba(0, 80, 220, 0.55); }
+:root:not(.dark) .text-blue-400\/35 { color: rgba(0, 80, 220, 0.5); }
+:root:not(.dark) .text-blue-400\/30 { color: rgba(0, 80, 220, 0.45); }
+:root:not(.dark) .text-blue-400\/25 { color: rgba(0, 80, 220, 0.4); }
+:root:not(.dark) .text-cyan-400\/60 { color: rgba(0, 140, 200, 0.75); }
+:root:not(.dark) .text-cyan-400\/50 { color: rgba(0, 140, 200, 0.65); }
+
+/* Light mode borders */
+:root:not(.dark) .border-blue-500\/\[0\.06\],
+:root:not(.dark) .border-blue-500\/\[0\.05\],
+:root:not(.dark) .border-blue-500\/\[0\.04\],
+:root:not(.dark) .border-blue-500\/\[0\.08\] {
+  border-color: rgba(0, 60, 180, 0.12);
+}
+
+/* Light mode cards/surfaces */
+:root:not(.dark) .bg-blue-900\/\[0\.02\],
+:root:not(.dark) .bg-blue-900\/\[0\.01\],
+:root:not(.dark) .bg-blue-900\/\[0\.04\] {
+  background: rgba(0, 60, 180, 0.03);
+}
+
+/* Light mode: gradient text still works */
+:root:not(.dark) .from-blue-500 { --tw-gradient-from: #0050dd; }
+:root:not(.dark) .to-cyan-400 { --tw-gradient-to: #0090cc; }
+:root:not(.dark) .via-blue-400 { --tw-gradient-via: #0070ee; }
+
+/* Light mode nav overlay */
+:root:not(.dark) nav.mix-blend-difference { mix-blend-mode: normal; }
+
+/* Light mode hero section */
+:root:not(.dark) .number-glow {
+  text-shadow:
+    0 0 40px rgba(0, 80, 220, 0.1),
+    0 0 100px rgba(0, 80, 220, 0.06);
+}
+
+/* Light mode scan lines - hide them */
+:root:not(.dark) .fixed.inset-0.pointer-events-none.z-\[100\] { opacity: 0; }
+
+/* ====== #35 Number Layers ====== */
 .number-glow {
   z-index: 1;
   color: transparent;
@@ -73,7 +153,6 @@ body {
 }
 
 /* ====== Animations ====== */
-
 @keyframes particle-float {
   0% { transform: translateY(100vh) scale(0); opacity: 0; }
   10% { opacity: 1; }
@@ -84,11 +163,6 @@ body {
 @keyframes ring-expand {
   0% { width: 80px; height: 80px; opacity: 0.4; }
   100% { width: 900px; height: 900px; opacity: 0; }
-}
-
-@keyframes bloom-pulse {
-  0% { transform: scale(0.9); opacity: 0.6; }
-  100% { transform: scale(1.1); opacity: 1; }
 }
 
 @keyframes emoji-float {
@@ -113,29 +187,54 @@ body {
   100% { opacity: 1; }
 }
 
-/* Tailwind custom utilities */
 .animate-ring-expand { animation: ring-expand 5s ease-out infinite; }
-.animate-bloom-pulse { animation: bloom-pulse 5s ease-in-out infinite alternate; }
 .animate-emoji-float { animation: emoji-float 8s ease-in-out infinite; }
 .animate-ticker { animation: ticker-scroll 25s linear infinite; }
 .animate-scroll-bounce { animation: scroll-bounce 2s ease-in-out infinite; }
 .animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite alternate; }
 .animate-spin-slow { animation: spin 3s linear infinite; }
 
-/* Confetti */
 @keyframes confetti-fall {
   0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
   100% { transform: translateY(250px) rotate(720deg) scale(0.5); opacity: 0; }
 }
-.animate-confetti { animation: confetti-fall 1.5s ease-out forwards; opacity: 0; animation-fill-mode: forwards; }
-.animate-confetti { opacity: 1; }
+.animate-confetti { animation: confetti-fall 1.5s ease-out forwards; opacity: 1; }
 
-/* Mobile minimum readability */
+/* ====== Touch Targets ====== */
+@media (pointer: coarse) {
+  /* Ensure all interactive elements are at least 44x44px on touch */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  /* Except inline text links */
+  p a, span a, .inline-link {
+    min-height: unset;
+    min-width: unset;
+  }
+}
+
+/* ====== Mobile Readability ====== */
 @media (max-width: 768px) {
-  /* Prevent text from being unreadably small on mobile */
   .text-\[0\.35rem\] { font-size: 0.5rem; }
   .text-\[0\.38rem\] { font-size: 0.5rem; }
   .text-\[0\.4rem\]  { font-size: 0.5rem; }
   .text-\[0\.42rem\] { font-size: 0.55rem; }
   .text-\[0\.45rem\] { font-size: 0.55rem; }
+}
+
+/* ====== Image Loading Skeleton ====== */
+img[data-nimg] {
+  background: linear-gradient(90deg, var(--card-bg) 25%, var(--accent-glow) 50%, var(--card-bg) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+img[data-nimg][src] {
+  animation: none;
+  background: none;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }

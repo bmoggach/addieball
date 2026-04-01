@@ -50,11 +50,13 @@ const clips = [
 export default function HighlightsPage() {
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const [loading, setLoading] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const featured = clips[active];
 
   const handlePlay = useCallback(() => {
     setPlaying(true);
+    setLoading(true);
   }, []);
 
   const handleThumbClick = useCallback((i: number) => {
@@ -104,6 +106,13 @@ export default function HighlightsPage() {
       <section className="px-6 md:px-10 mb-6">
         <div className="relative aspect-video max-w-6xl rounded-xl overflow-hidden border border-blue-500/[0.08] bg-black hover:border-blue-500/[0.15] transition-all">
 
+          {/* Loading spinner */}
+          {loading && (
+            <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+              <div className="w-10 h-10 border-2 border-blue-400/30 border-t-blue-400/80 rounded-full animate-spin" />
+            </div>
+          )}
+
           {playing ? (
             <video
               ref={videoRef}
@@ -114,6 +123,8 @@ export default function HighlightsPage() {
               autoPlay
               onEnded={handleVideoEnd}
               onClick={handleVideoClick}
+            onCanPlay={() => setLoading(false)}
+            onWaiting={() => setLoading(true)}
             />
           ) : (
             <>

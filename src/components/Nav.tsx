@@ -49,7 +49,7 @@ export default function Nav() {
           ))}
           <button
             onClick={toggleTheme}
-            className="text-white/30 hover:text-blue-400/70 transition-colors text-sm"
+            className="text-white/30 hover:text-blue-400/70 transition-colors text-sm p-2"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? "☀️" : "🌙"}
@@ -72,7 +72,7 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-[#030308]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden">
+        <div className="fixed inset-0 z-40 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden" style={{ background: 'var(--overlay)' }}>
           {links.map((link) => (
             <Link
               key={link.href}
@@ -87,7 +87,7 @@ export default function Nav() {
           ))}
           <button
             onClick={toggleTheme}
-            className="text-white/30 hover:text-blue-400/70 transition-colors text-xl mt-4"
+            className="text-white/30 hover:text-blue-400/70 transition-colors text-xl mt-4 p-2"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? "☀️" : "🌙"}

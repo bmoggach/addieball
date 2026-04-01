@@ -59,7 +59,7 @@ export default function GalleryPage() {
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`text-[0.5rem] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-full border transition-all
+                className={`text-[0.5rem] font-bold tracking-[0.15em] uppercase px-5 py-3 rounded-full border transition-all
                   ${activeFilter === filter
                     ? "bg-blue-500/[0.1] border-blue-400/20 text-blue-400/70"
                     : "border-white/[0.06] text-white/35 hover:border-blue-400/15 hover:text-blue-400/50"
@@ -165,7 +165,7 @@ export default function GalleryPage() {
             {/* Nav arrows */}
             {lightbox > 0 && (
               <button
-                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-white/70 hover:border-white/30 transition-all z-[210]"
+                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-white/70 hover:border-white/30 transition-all z-[210]"
                 onClick={(e) => { e.stopPropagation(); setLightbox(lightbox - 1); }}
               >
                 ←
@@ -173,7 +173,7 @@ export default function GalleryPage() {
             )}
             {lightbox < filtered.length - 1 && (
               <button
-                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-white/70 hover:border-white/30 transition-all z-[210]"
+                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-white/70 hover:border-white/30 transition-all z-[210]"
                 onClick={(e) => { e.stopPropagation(); setLightbox(lightbox + 1); }}
               >
                 →

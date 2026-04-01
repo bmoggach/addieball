@@ -15,7 +15,7 @@ export default function ParticleField({ count = 25 }: { count?: number }) {
       p.style.cssText = `
         position: absolute;
         width: ${size}px; height: ${size}px;
-        background: rgba(0,140,255,0.15);
+        background: rgba(0,100,220,0.15);
         border-radius: 50%;
         left: ${Math.random() * 100}%;
         animation: particle-float ${Math.random() * 15 + 10}s linear infinite;
