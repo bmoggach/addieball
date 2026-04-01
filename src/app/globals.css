@@ -129,3 +129,13 @@ body {
 }
 .animate-confetti { animation: confetti-fall 1.5s ease-out forwards; opacity: 0; animation-fill-mode: forwards; }
 .animate-confetti { opacity: 1; }
+
+/* Mobile minimum readability */
+@media (max-width: 768px) {
+  /* Prevent text from being unreadably small on mobile */
+  .text-\[0\.35rem\] { font-size: 0.5rem; }
+  .text-\[0\.38rem\] { font-size: 0.5rem; }
+  .text-\[0\.4rem\]  { font-size: 0.5rem; }
+  .text-\[0\.42rem\] { font-size: 0.55rem; }
+  .text-\[0\.45rem\] { font-size: 0.55rem; }
+}

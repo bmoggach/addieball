@@ -143,7 +143,7 @@ export default function GalleryPage() {
               ✕
             </div>
             <div
-              className="max-w-4xl w-full mx-8 aspect-[4/3] rounded-xl border border-blue-500/[0.1] bg-black/50 relative overflow-hidden"
+              className="max-w-4xl w-full mx-4 md:mx-8 aspect-[3/4] md:aspect-[4/3] rounded-xl border border-blue-500/[0.1] bg-black/50 relative overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               {filtered[lightbox] && (

@@ -55,10 +55,10 @@ export default function Hero() {
       {/* ═══════════════════════════════════
           SPLIT LAYOUT: Left text / Right photo
           ═══════════════════════════════════ */}
-      <div className="relative z-10 w-full h-full flex items-end">
+      <div className="relative z-10 w-full h-full flex flex-col md:flex-row items-end">
 
         {/* ── LEFT SIDE: Typography ── */}
-        <div className="relative z-20 flex-1 flex flex-col justify-end pb-[12vh] pl-[clamp(2rem,6vw,6rem)]">
+        <div className="relative z-20 flex-1 flex flex-col justify-end pb-[6vh] md:pb-[12vh] pl-6 md:pl-[clamp(2rem,6vw,6rem)]">
 
           {/* Big #35 watermark behind text */}
           <div
@@ -66,7 +66,7 @@ export default function Hero() {
             className="absolute bottom-[5vh] left-[clamp(1rem,4vw,4rem)] pointer-events-none select-none"
             style={{ willChange: "transform" }}
           >
-            <div className="text-[clamp(14rem,25vw,28rem)] font-black leading-none tracking-tight number-glow opacity-60">
+            <div className="text-[clamp(8rem,25vw,28rem)] font-black leading-none tracking-tight number-glow opacity-60">
               35
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function Hero() {
               initial={{ x: -60, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[clamp(4.5rem,11vw,10rem)] font-black text-white leading-[0.85] uppercase tracking-[-0.04em]"
+              className="text-[clamp(3rem,11vw,10rem)] font-black text-white leading-[0.85] uppercase tracking-[-0.04em]"
             >
               ADDIE
             </motion.div>
@@ -99,7 +99,7 @@ export default function Hero() {
               initial={{ x: -60, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[clamp(4.5rem,11vw,10rem)] font-black leading-[0.85] uppercase tracking-[-0.04em] bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 bg-clip-text text-transparent"
+              className="text-[clamp(3rem,11vw,10rem)] font-black leading-[0.85] uppercase tracking-[-0.04em] bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 bg-clip-text text-transparent"
             >
               MOGGACH
             </motion.div>
@@ -109,7 +109,7 @@ export default function Hero() {
               initial={{ y: 15, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex items-center gap-6 mt-8"
+              className="flex flex-wrap items-center gap-4 md:gap-6 mt-6 md:mt-8"
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full border border-blue-500/20 flex items-center justify-center">
@@ -140,7 +140,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative flex-shrink-0 w-[45%] max-w-[550px] h-full flex items-end justify-center pointer-events-none"
+          className="relative flex-shrink-0 w-full md:w-[45%] max-w-[550px] h-[50vh] md:h-full flex items-end justify-center pointer-events-none absolute bottom-0 right-0 md:relative"
           style={{ willChange: "transform" }}
         >
           {/* Glow behind the photo */}
@@ -162,7 +162,7 @@ export default function Hero() {
             width={700}
             height={933}
             priority
-            className="relative z-10 h-[88vh] w-auto object-contain object-bottom drop-shadow-[0_0_60px_rgba(0,60,255,0.12)]"
+            className="relative z-10 h-[50vh] md:h-[88vh] w-auto object-contain object-bottom drop-shadow-[0_0_60px_rgba(0,60,255,0.12)]"
           />
 
           {/* Floating badge on the photo side */}
@@ -170,7 +170,7 @@ export default function Hero() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 1.2, ease: [0.34, 1.56, 0.64, 1] }}
-            className="absolute top-[18%] right-[5%] z-20 bg-blue-500/[0.08] border border-blue-400/[0.15] rounded-full px-4 py-1.5 text-[0.55rem] font-bold text-cyan-400/60 tracking-wider uppercase backdrop-blur-sm"
+            className="absolute top-[18%] right-[5%] z-20 bg-blue-500/[0.08] border border-blue-400/[0.15] rounded-full px-4 py-1.5 text-[0.55rem] font-bold text-cyan-400/60 tracking-wider uppercase backdrop-blur-sm hidden md:block"
           >
             🔥 Built Different
           </motion.div>
@@ -178,7 +178,7 @@ export default function Hero() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 1.5, ease: [0.34, 1.56, 0.64, 1] }}
-            className="absolute top-[35%] left-[-5%] z-20 bg-blue-500/[0.08] border border-blue-400/[0.15] rounded-full px-4 py-1.5 text-[0.55rem] font-bold text-cyan-400/60 tracking-wider uppercase backdrop-blur-sm"
+            className="absolute top-[35%] left-[-5%] z-20 bg-blue-500/[0.08] border border-blue-400/[0.15] rounded-full px-4 py-1.5 text-[0.55rem] font-bold text-cyan-400/60 tracking-wider uppercase backdrop-blur-sm hidden md:block"
           >
             👑 Barrie Royals
           </motion.div>

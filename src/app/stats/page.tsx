@@ -105,7 +105,7 @@ export default function StatsPage() {
 
       {/* Season record */}
       <section className="px-6 md:px-10 pb-16">
-        <div className="flex gap-12 max-w-5xl">
+        <div className="flex flex-wrap gap-8 md:gap-12 max-w-5xl">
           {[
             { value: "12-6", label: "Record" },
             { value: "48%", label: "FG%" },
