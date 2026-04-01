@@ -18,7 +18,7 @@ const filters = ["All", "Buckets", "Handles", "Assists", "Defense"];
 
 export default function HighlightsPage() {
   return (
-    <main className="pt-24">
+    <main className="min-h-screen pt-24">
       {/* Hero */}
       <section className="px-6 md:px-10 py-16 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,80,255,0.04)_0%,transparent_60%)]" />

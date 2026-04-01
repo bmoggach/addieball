@@ -129,7 +129,7 @@ export default function MerchPage() {
   };
 
   return (
-    <main className="pt-24 relative">
+    <main className="min-h-screen pt-24 relative">
       {/* Confetti */}
       {confetti.length > 0 && (
         <div className="fixed inset-0 pointer-events-none z-[200]">

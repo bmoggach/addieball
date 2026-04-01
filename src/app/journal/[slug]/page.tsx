@@ -100,7 +100,7 @@ export default function JournalPostPage() {
   }
 
   return (
-    <main className="pt-24">
+    <main className="min-h-screen pt-24">
       <article className="px-6 md:px-10 py-16 max-w-3xl mx-auto">
         {/* Back link */}
         <Link href="/journal" className="text-[0.5rem] font-semibold text-blue-400/40 tracking-[0.2em] uppercase hover:text-blue-400/70 transition-colors mb-8 block">
