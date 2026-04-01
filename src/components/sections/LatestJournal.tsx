@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function LatestJournal() {
@@ -20,12 +21,19 @@ export default function LatestJournal() {
           Latest <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">Entry</span>
         </h2>
 
-        <Link href="/journal" className="block group">
+        <Link href="/journal/game-day-vs-lightning" className="block group">
           <div className="flex flex-col md:flex-row gap-8 p-6 md:p-8 rounded-xl border border-blue-500/[0.06] bg-blue-900/[0.02] hover:border-blue-500/[0.15] transition-all">
-            {/* Thumbnail */}
-            <div className="w-full md:w-64 aspect-video rounded-lg overflow-hidden flex-shrink-0 bg-gradient-to-br from-blue-900/[0.06] to-blue-950/[0.03] relative">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,100,255,0.06)_0%,transparent_70%)]" />
-              <div className="absolute inset-0 flex items-center justify-center text-4xl opacity-[0.08]">🏀</div>
+            {/* Thumbnail with real photo */}
+            <div className="w-full md:w-64 aspect-video rounded-lg overflow-hidden flex-shrink-0 relative">
+              <Image
+                src="/images/action/action-4.webp"
+                alt="Game Day vs Lightning"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 256px"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </div>
 
             {/* Content */}
