@@ -1,20 +1,45 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const clips = [
-  { title: "Crossover → Stepback Three", game: "vs Thunder", duration: "0:24", src: "/images/action/action-2.webp", badge: "🔥 Top Play" },
-  { title: "Ankle Breaker", game: "vs Lightning", duration: "0:18", src: "/images/action/action-4.webp", badge: null },
-  { title: "Fast Break Layup", game: "vs Hawks", duration: "0:15", src: "/images/action/action-5.webp", badge: null },
-  { title: "Block Party", game: "vs Storm", duration: "0:12", src: "/images/action/action-1.webp", badge: null },
-  { title: "Dime from Half", game: "vs Rockets", duration: "0:20", src: "/images/action/action-3.webp", badge: null },
+  { title: "Crossover → Stepback Three", game: "vs Thunder", duration: "0:24", poster: "/images/action/action-2.webp", video: "/images/action/game-clip.mp4" },
+  { title: "Ankle Breaker", game: "vs Lightning", duration: "0:18", poster: "/images/action/action-4.webp", video: null },
+  { title: "Fast Break Layup", game: "vs Hawks", duration: "0:15", poster: "/images/action/action-5.webp", video: null },
+  { title: "Block Party", game: "vs Storm", duration: "0:12", poster: "/images/action/action-1.webp", video: null },
+  { title: "Dime from Half", game: "vs Rockets", duration: "0:20", poster: "/images/action/action-3.webp", video: null },
 ];
 
 export default function HighlightReel() {
   const [active, setActive] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const featured = clips[active];
+
+  function handlePlay() {
+    if (!featured.video) return;
+    setPlaying(true);
+    // Small delay to let the video element mount
+    setTimeout(() => {
+      videoRef.current?.play();
+    }, 50);
+  }
+
+  function handleThumbClick(i: number) {
+    if (i === active && playing) return;
+    setActive(i);
+    setPlaying(false);
+  }
+
+  function handleVideoEnd() {
+    setPlaying(false);
+    // Auto-advance to next clip
+    if (active < clips.length - 1) {
+      setActive(active + 1);
+    }
+  }
 
   return (
     <section className="relative py-32 px-6 md:px-10">
@@ -35,77 +60,114 @@ export default function HighlightReel() {
         </Link>
       </div>
 
-      {/* Featured clip — click swaps, doesn't navigate */}
-      <div className="relative aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-blue-500/[0.08] group cursor-pointer hover:border-blue-500/[0.2] transition-all">
-        {/* Poster image with crossfade */}
-        <Image
-          key={featured.src}
-          src={featured.src}
-          alt={featured.title}
-          fill
-          className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
-          sizes="(max-width: 1024px) 100vw, 1024px"
-          priority={active === 0}
-        />
+      {/* Main player */}
+      <div className="relative aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden border border-blue-500/[0.08] group hover:border-blue-500/[0.15] transition-all bg-black">
 
-        {/* Letterbox bars */}
-        <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/60 to-transparent z-10" />
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/60 to-transparent z-10" />
-
-        {/* Play button */}
-        <div className="absolute inset-0 flex items-center justify-center z-20">
-          <div className="w-20 h-20 rounded-full border-2 border-blue-400/30 flex items-center justify-center bg-blue-500/[0.08] backdrop-blur-sm group-hover:bg-blue-500/[0.2] group-hover:border-blue-400/50 group-hover:scale-110 transition-all">
-            <div className="w-0 h-0 border-l-[18px] border-l-blue-400/60 border-t-[11px] border-t-transparent border-b-[11px] border-b-transparent ml-1.5 group-hover:border-l-blue-400/90 transition-colors" />
-          </div>
-        </div>
-
-        {/* Game info overlay */}
-        <div className="absolute bottom-5 left-6 z-20">
-          <div className="text-[0.45rem] font-semibold text-blue-400/50 tracking-[0.2em] uppercase">
-            {featured.game}
-          </div>
-          <div className="text-sm font-bold text-white/70 mt-1">
-            {featured.title} 🔥
-          </div>
-        </div>
-
-        {/* Duration */}
-        <div className="absolute bottom-5 right-6 z-20 text-[0.5rem] font-mono text-blue-400/30">
-          {featured.duration}
-        </div>
-
-        {/* Badge */}
-        {featured.badge && (
-          <div className="absolute top-5 right-6 z-20 text-[0.45rem] font-bold text-blue-400/50 tracking-[0.15em] uppercase px-3 py-1 bg-blue-500/[0.08] border border-blue-400/15 rounded-full backdrop-blur-sm">
-            {featured.badge}
-          </div>
+        {/* Video layer — shown when playing */}
+        {playing && featured.video && (
+          <video
+            ref={videoRef}
+            src={featured.video}
+            className="absolute inset-0 w-full h-full object-cover z-10"
+            playsInline
+            autoPlay
+            onEnded={handleVideoEnd}
+            onClick={() => {
+              if (videoRef.current?.paused) {
+                videoRef.current.play();
+              } else {
+                videoRef.current?.pause();
+                setPlaying(false);
+              }
+            }}
+          />
         )}
 
-        {/* Clip counter */}
-        <div className="absolute top-5 left-6 z-20 text-[0.45rem] font-mono text-blue-400/30">
-          {active + 1} / {clips.length}
-        </div>
+        {/* Poster image — shown when not playing */}
+        {!playing && (
+          <>
+            <Image
+              key={featured.poster}
+              src={featured.poster}
+              alt={featured.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              priority={active === 0}
+            />
+
+            {/* Letterbox bars */}
+            <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black/60 to-transparent z-10" />
+            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/60 to-transparent z-10" />
+
+            {/* Play button */}
+            <button
+              onClick={handlePlay}
+              className="absolute inset-0 flex items-center justify-center z-20"
+            >
+              <div className={`w-20 h-20 rounded-full border-2 flex items-center justify-center backdrop-blur-sm transition-all ${
+                featured.video
+                  ? "border-blue-400/30 bg-blue-500/[0.08] hover:bg-blue-500/[0.2] hover:border-blue-400/50 hover:scale-110 cursor-pointer"
+                  : "border-white/10 bg-white/[0.03] cursor-default"
+              }`}>
+                <div className={`w-0 h-0 border-l-[18px] border-t-[11px] border-t-transparent border-b-[11px] border-b-transparent ml-1.5 transition-colors ${
+                  featured.video ? "border-l-blue-400/60" : "border-l-white/20"
+                }`} />
+              </div>
+              {!featured.video && (
+                <span className="absolute mt-28 text-[0.45rem] font-bold text-white/20 tracking-[0.15em] uppercase">
+                  Coming Soon
+                </span>
+              )}
+            </button>
+
+            {/* Game info overlay */}
+            <div className="absolute bottom-5 left-6 z-20">
+              <div className="text-[0.45rem] font-semibold text-blue-400/50 tracking-[0.2em] uppercase">
+                {featured.game}
+              </div>
+              <div className="text-sm font-bold text-white/70 mt-1">
+                {featured.title}
+              </div>
+            </div>
+
+            {/* Duration */}
+            <div className="absolute bottom-5 right-6 z-20 text-[0.5rem] font-mono text-blue-400/30">
+              {featured.duration}
+            </div>
+
+            {/* Clip counter */}
+            <div className="absolute top-5 left-6 z-20 text-[0.45rem] font-mono text-blue-400/30">
+              {active + 1} / {clips.length}
+            </div>
+
+            {/* Badge */}
+            {active === 0 && (
+              <div className="absolute top-5 right-6 z-20 text-[0.45rem] font-bold text-blue-400/50 tracking-[0.15em] uppercase px-3 py-1 bg-blue-500/[0.08] border border-blue-400/15 rounded-full backdrop-blur-sm">
+                🔥 Top Play
+              </div>
+            )}
+          </>
+        )}
       </div>
 
-      {/* Thumbnail strip — clicking swaps the featured clip */}
+      {/* Thumbnail strip */}
       <div className="flex gap-3 mt-6 max-w-5xl mx-auto overflow-x-auto pb-2">
         {clips.map((clip, i) => (
           <button
             key={i}
-            onClick={() => setActive(i)}
-            className={`flex-shrink-0 w-48 aspect-video rounded-lg border relative overflow-hidden transition-all group cursor-pointer ${
+            onClick={() => handleThumbClick(i)}
+            className={`flex-shrink-0 w-48 aspect-video rounded-lg border relative overflow-hidden transition-all group ${
               i === active
                 ? "border-blue-400/30 ring-1 ring-blue-400/20"
                 : "border-blue-500/[0.06] hover:border-blue-500/[0.2]"
             }`}
           >
             <Image
-              src={clip.src}
+              src={clip.poster}
               alt={clip.title}
               fill
-              className={`object-cover transition-all duration-500 ${
-                i === active ? "scale-100" : "group-hover:scale-105"
-              }`}
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
               sizes="192px"
               loading="lazy"
             />
@@ -123,17 +185,25 @@ export default function HighlightReel() {
             )}
 
             {/* Now playing indicator */}
-            {i === active && (
-              <div className="absolute top-2 left-2 text-[0.38rem] font-bold text-blue-400/70 tracking-wider uppercase px-1.5 py-0.5 bg-blue-500/[0.15] rounded z-10">
-                Now
+            {i === active && playing && (
+              <div className="absolute top-2 left-2 text-[0.38rem] font-bold text-blue-400/70 tracking-wider uppercase px-1.5 py-0.5 bg-blue-500/[0.15] rounded z-10 flex items-center gap-1">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400/70 animate-pulse" />
+                Playing
               </div>
             )}
 
-            <div className="absolute bottom-2 left-3 text-[0.45rem] font-semibold text-white/50 group-hover:text-white/70 transition-colors z-10">
+            {/* No video indicator */}
+            {!clip.video && (
+              <div className="absolute top-2 right-2 text-[0.35rem] font-mono text-white/20 z-10">
+                📷
+              </div>
+            )}
+
+            <div className="absolute bottom-2 left-3 text-[0.45rem] font-semibold text-white/50 z-10">
               {clip.title}
             </div>
             <div className="absolute top-2 right-2 text-[0.4rem] font-mono text-white/30 z-10">
-              {clip.duration}
+              {clip.video ? clip.duration : ""}
             </div>
           </button>
         ))}
