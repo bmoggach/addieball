@@ -6,18 +6,18 @@ import Image from "next/image";
 import Footer from "@/components/Footer";
 
 const images = [
-  { caption: "Studio Portrait", category: "Portraits", aspect: "tall", src: "/images/gallery/studio-portrait.jpg" },
-  { caption: "The Flex", category: "Portraits", aspect: "tall", src: "/images/gallery/studio-flex.jpg" },
-  { caption: "Teammates", category: "Lifestyle", aspect: "tall", src: "/images/gallery/studio-piggyback.jpg" },
-  { caption: "Team Huddle", category: "Game", aspect: "wide", src: "/images/action/huddle.jpg" },
-  { caption: "Warmup at Stadium", category: "Game", aspect: "tall", src: "/images/action/warmup.jpg" },
-  { caption: "Post-Game Smile", category: "Lifestyle", aspect: "tall", src: "/images/action/postgame-smile.jpg" },
-  { caption: "Game Action", category: "Game", aspect: "wide", src: "/images/action/action-1.jpg" },
-  { caption: "On the Court", category: "Game", aspect: "wide", src: "/images/action/action-2.jpg" },
-  { caption: "Game Day", category: "Game", aspect: "wide", src: "/images/action/action-3.jpg" },
-  { caption: "In the Zone", category: "Game", aspect: "wide", src: "/images/action/action-4.jpg" },
-  { caption: "Court Vision", category: "Game", aspect: "wide", src: "/images/action/action-5.jpg" },
-  { caption: "U12 Barrie Royals", category: "Team", aspect: "wide", src: "/images/team/team-photo.jpg" },
+  { caption: "Studio Portrait", category: "Portraits", aspect: "tall", src: "/images/gallery/studio-portrait.webp" },
+  { caption: "The Flex", category: "Portraits", aspect: "tall", src: "/images/gallery/studio-flex.webp" },
+  { caption: "Teammates", category: "Lifestyle", aspect: "tall", src: "/images/gallery/studio-piggyback.webp" },
+  { caption: "Team Huddle", category: "Game", aspect: "wide", src: "/images/action/huddle.webp" },
+  { caption: "Warmup at Stadium", category: "Game", aspect: "tall", src: "/images/action/warmup.webp" },
+  { caption: "Post-Game Smile", category: "Lifestyle", aspect: "tall", src: "/images/action/postgame-smile.webp" },
+  { caption: "Game Action", category: "Game", aspect: "wide", src: "/images/action/action-1.webp" },
+  { caption: "On the Court", category: "Game", aspect: "wide", src: "/images/action/action-2.webp" },
+  { caption: "Game Day", category: "Game", aspect: "wide", src: "/images/action/action-3.webp" },
+  { caption: "In the Zone", category: "Game", aspect: "wide", src: "/images/action/action-4.webp" },
+  { caption: "Court Vision", category: "Game", aspect: "wide", src: "/images/action/action-5.webp" },
+  { caption: "U12 Barrie Royals", category: "Team", aspect: "wide", src: "/images/team/team-photo.webp" },
 ];
 
 const filters = ["All", "Game", "Portraits", "Lifestyle", "Team"];

@@ -147,7 +147,7 @@ export default function Hero() {
           <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[120%] h-[70%] bg-[radial-gradient(ellipse_at_bottom,rgba(0,80,255,0.1)_0%,transparent_60%)]" />
 
           <Image
-            src="/images/hero/addie-cutout.png"
+            src="/images/hero/addie-cutout.webp"
             alt="Addie Moggach #35 — Barrie Royals"
             width={700}
             height={933}

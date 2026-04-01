@@ -67,7 +67,7 @@ export default function AboutPage() {
           >
             <div className="aspect-[3/4] rounded-xl overflow-hidden border border-blue-500/[0.08] bg-gradient-to-br from-blue-900/[0.06] to-blue-950/[0.03] relative">
               <Image
-                src="/images/about/addie-flex-cutout.png"
+                src="/images/about/addie-flex-cutout.webp"
                 alt="Addie Moggach flexing with basketball"
                 fill
                 className="object-contain object-bottom"
