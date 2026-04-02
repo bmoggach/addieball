@@ -153,7 +153,8 @@ export default function Hero() {
             loop
             muted
             playsInline
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[140%] h-[80%] object-cover object-bottom opacity-50 mix-blend-screen z-[5] pointer-events-none"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[160%] h-[90%] object-cover object-bottom opacity-40 mix-blend-screen z-[5] pointer-events-none"
+            style={{ maskImage: 'radial-gradient(ellipse 50% 60% at 50% 70%, black 20%, transparent 70%)', WebkitMaskImage: 'radial-gradient(ellipse 50% 60% at 50% 70%, black 20%, transparent 70%)' }}
           />
 
           <Image
