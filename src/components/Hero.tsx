@@ -146,16 +146,12 @@ export default function Hero() {
           {/* Glow behind the photo */}
           <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[120%] h-[70%] bg-[radial-gradient(ellipse_at_bottom,rgba(0,80,255,0.1)_0%,transparent_60%)]" />
 
-          {/* Blue smoke video loop behind Addie */}
-          <video
-            src="/videos/smoke-bg.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[200%] h-[100%] object-cover object-center opacity-30 mix-blend-screen z-[5] pointer-events-none"
-            style={{ maskImage: 'radial-gradient(ellipse 30% 40% at 50% 65%, black 0%, transparent 100%)', WebkitMaskImage: 'radial-gradient(ellipse 30% 40% at 50% 65%, black 0%, transparent 100%)' }}
-          />
+          {/* Animated blue smoke glow — pure CSS, no video artifacts */}
+          <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[80%] h-[70%] z-[5] pointer-events-none">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,100,255,0.12)_0%,transparent_60%)] animate-pulse-slow" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_80%,rgba(0,180,255,0.08)_0%,transparent_50%)]" style={{ animation: 'smoke-drift 8s ease-in-out infinite alternate' }} />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_70%,rgba(0,140,255,0.1)_0%,transparent_55%)]" style={{ animation: 'smoke-drift 12s ease-in-out infinite alternate-reverse' }} />
+          </div>
 
           <Image
             src="/images/hero/addie-cutout.webp"
