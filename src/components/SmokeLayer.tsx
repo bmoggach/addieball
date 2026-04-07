@@ -12,7 +12,7 @@ interface SmokeLayerProps {
 
 /**
  * Two copies of the same smoke video crossfade at the loop point
- * so the restart is never visible.
+ * so the restart is never visible. Handles mobile autoplay.
  */
 export default function SmokeLayer({ src, className, maskStyle, maxOpacity, delayB = 0 }: SmokeLayerProps) {
   const refA = useRef<HTMLVideoElement>(null);
@@ -41,9 +41,24 @@ export default function SmokeLayer({ src, className, maskStyle, maxOpacity, dela
     const b = refB.current;
     if (!a || !b) return;
 
+    // Force play on mobile (muted autoplay is allowed)
+    const tryPlay = (v: HTMLVideoElement) => {
+      v.play().catch(() => {
+        // iOS might block — retry on first touch
+        const handler = () => {
+          v.play().catch(() => {});
+          document.removeEventListener("touchstart", handler);
+        };
+        document.addEventListener("touchstart", handler, { once: true });
+      });
+    };
+
+    a.style.opacity = String(maxOpacity);
+    b.style.opacity = "0";
+    tryPlay(a);
+
     let active = a;
     let standby = b;
-    b.style.opacity = "0";
 
     const onTimeUpdate = () => {
       if (active.duration && active.currentTime > active.duration - 1.5) {
@@ -61,7 +76,7 @@ export default function SmokeLayer({ src, className, maskStyle, maxOpacity, dela
       a.removeEventListener("timeupdate", onTimeUpdate);
       b.removeEventListener("timeupdate", onTimeUpdate);
     };
-  }, [crossfade]);
+  }, [crossfade, maxOpacity]);
 
   return (
     <>
@@ -82,6 +97,7 @@ export default function SmokeLayer({ src, className, maskStyle, maxOpacity, dela
         muted
         playsInline
         preload="auto"
+        loop
         className={className}
         style={{ ...maskStyle, opacity: 0 }}
       />
