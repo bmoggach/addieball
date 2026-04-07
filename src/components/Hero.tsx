@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import SmokeLayer from "./SmokeLayer";
 
 export default function Hero() {
   const textRef = useRef<HTMLDivElement>(null);
@@ -146,34 +147,27 @@ export default function Hero() {
           {/* Glow behind the photo */}
           <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[120%] h-[70%] bg-[radial-gradient(ellipse_at_bottom,rgba(0,80,255,0.1)_0%,transparent_60%)]" />
 
-          {/* Blue smoke — two video layers, feathered to invisible at edges */}
-          {/* Low fog at feet */}
-          <video
+          {/* Blue smoke — crossfading video layers for seamless loop */}
+          <SmokeLayer
             src="/videos/smoke-fog.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[180%] h-[60%] object-cover object-bottom opacity-50 mix-blend-screen z-[5] pointer-events-none"
-            style={{
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[180%] h-[60%] object-cover object-bottom mix-blend-screen z-[5] pointer-events-none"
+            maskStyle={{
               maskImage: 'linear-gradient(to top, black 0%, transparent 70%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
               WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 70%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
               maskComposite: 'intersect',
-              WebkitMaskComposite: 'source-in',
+              WebkitMaskComposite: 'source-in' as const,
             }}
+            maxOpacity={0.5}
           />
-          {/* Rising wisps behind torso */}
-          <video
+          <SmokeLayer
             src="/videos/smoke-wisps.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[160%] h-[70%] object-cover object-bottom opacity-40 mix-blend-screen z-[5] pointer-events-none"
-            style={{
+            className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[160%] h-[70%] object-cover object-bottom mix-blend-screen z-[5] pointer-events-none"
+            maskStyle={{
               maskImage: 'radial-gradient(ellipse 45% 55% at 50% 70%, black 0%, transparent 80%)',
               WebkitMaskImage: 'radial-gradient(ellipse 45% 55% at 50% 70%, black 0%, transparent 80%)',
             }}
+            maxOpacity={0.4}
+            delayB={2.5}
           />
 
           <Image
