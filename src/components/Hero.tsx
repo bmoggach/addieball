@@ -146,12 +146,35 @@ export default function Hero() {
           {/* Glow behind the photo */}
           <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[120%] h-[70%] bg-[radial-gradient(ellipse_at_bottom,rgba(0,80,255,0.1)_0%,transparent_60%)]" />
 
-          {/* Animated blue smoke glow — pure CSS, no video artifacts */}
-          <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[80%] h-[70%] z-[5] pointer-events-none">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,100,255,0.12)_0%,transparent_60%)] animate-pulse-slow" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_80%,rgba(0,180,255,0.08)_0%,transparent_50%)]" style={{ animation: 'smoke-drift 8s ease-in-out infinite alternate' }} />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_40%_70%,rgba(0,140,255,0.1)_0%,transparent_55%)]" style={{ animation: 'smoke-drift 12s ease-in-out infinite alternate-reverse' }} />
-          </div>
+          {/* Blue smoke — two video layers, feathered to invisible at edges */}
+          {/* Low fog at feet */}
+          <video
+            src="/videos/smoke-fog.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[180%] h-[60%] object-cover object-bottom opacity-50 mix-blend-screen z-[5] pointer-events-none"
+            style={{
+              maskImage: 'linear-gradient(to top, black 0%, transparent 70%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 70%), linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)',
+              maskComposite: 'intersect',
+              WebkitMaskComposite: 'source-in',
+            }}
+          />
+          {/* Rising wisps behind torso */}
+          <video
+            src="/videos/smoke-wisps.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[160%] h-[70%] object-cover object-bottom opacity-40 mix-blend-screen z-[5] pointer-events-none"
+            style={{
+              maskImage: 'radial-gradient(ellipse 45% 55% at 50% 70%, black 0%, transparent 80%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 45% 55% at 50% 70%, black 0%, transparent 80%)',
+            }}
+          />
 
           <Image
             src="/images/hero/addie-cutout.webp"
