@@ -22,18 +22,11 @@ export default function SmokeLayer({ src, className, maskStyle, maxOpacity, dela
     to.currentTime = 0;
     to.play().catch(() => {});
 
-    const dur = 1500;
-    const steps = 30;
-    const stepMs = dur / steps;
-    let i = 0;
-
-    const interval = setInterval(() => {
-      i++;
-      const t = i / steps;
-      from.style.opacity = String(maxOpacity * (1 - t));
-      to.style.opacity = String(maxOpacity * t);
-      if (i >= steps) clearInterval(interval);
-    }, stepMs);
+    // Use CSS transitions instead of setInterval — zero JS overhead
+    from.style.transition = 'opacity 1.5s ease';
+    to.style.transition = 'opacity 1.5s ease';
+    from.style.opacity = '0';
+    to.style.opacity = String(maxOpacity);
   }, [maxOpacity]);
 
   useEffect(() => {
@@ -67,7 +60,10 @@ export default function SmokeLayer({ src, className, maskStyle, maxOpacity, dela
         const tmp = active;
         active = standby;
         standby = tmp;
-        active.addEventListener("timeupdate", onTimeUpdate);
+        // Delay re-attaching listener so it doesn't fire during crossfade
+        setTimeout(() => {
+          active.addEventListener("timeupdate", onTimeUpdate);
+        }, 2000);
       }
     };
 
@@ -96,7 +92,7 @@ export default function SmokeLayer({ src, className, maskStyle, maxOpacity, dela
         src={src}
         muted
         playsInline
-        preload="auto"
+        preload="none"
         loop
         className={className}
         style={{ ...maskStyle, opacity: 0 }}
